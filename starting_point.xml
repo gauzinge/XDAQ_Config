@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" user="xtaldaq" path="XDAQ_Config">
+  <property name="HWCFG_KEY" type="string" />
+  <FunctionManager name="levelOneTrackerFMnewEvb" hostname="cmsuptrackerdaq.cern.ch" port="8080" qualifiedResourceType="rcms.fm.resource.qualifiedresource.FunctionManager" role="TRACKER" sourceURL="http://cmsuptrackerdaq.cern.ch:8080/functionmanagers/levelOneTrackerFMnewEvb.jar" className="rcms.fm.app.level1tracker.MyFunctionManager">
+    <FunctionManager name="RUBuilderFMevb" hostname="cmsuptrackerdaq.cern.ch" port="8080" qualifiedResourceType="rcms.fm.resource.qualifiedresource.FunctionManager" role="TRACKER" sourceURL="http://cmsuptrackerdaq.cern.ch:8080/functionmanagers/rubuilderFM.jar" className="rcms.fm.app.rubuilder.RUBuilderFM">
+      <Service name="JobControl" hostname="cmsuptrackerdaq.cern.ch" port="9999" urn="/urn:xdaq-application:lid=10" qualifiedResourceType="rcms.fm.resource.qualifiedresource.JobControl" />
+      <XdaqApplication className="evb::BU" hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=52" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so lib/libtcpla.so lib/libptblit.so lib/libevb.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="ignoreResourceSummary" type="boolean">
+          <value>true</value>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="evb::EVM" hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=51" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so lib/libtcpla.so lib/libptblit.so lib/libevb.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="inputSource" type="string">
+          <value>Socket</value>
+        </property>
+        <property name="fakeLumiSectionDuration" type="unsignedInt">
+          <value>20</value>
+        </property>
+        <property name="fedSourceIds" type="array">
+          <property name="Ids" type="unsignedInt">
+            <value>51</value>
+          </property>
+          <!--<property name="Ids" type="unsignedInt">-->
+            <!--<value>106</value>-->
+          <!--</property>-->
+          <!--<property name="Ids" type="unsignedInt">-->
+            <!--<value>107</value>-->
+          <!--</property>-->
+          <!--<property name="Ids" type="unsignedInt">-->
+            <!--<value>108</value>-->
+          <!--</property>-->
+        </property>
+        <property name="ferolSources" type="array">
+          <property name="struct" type="structure">
+            <property name="fedId" type="unsignedInt">
+              <value>51</value>
+            </property>
+            <property name="hostname" type="string">
+              <value>cmsuptrackerdaq.cern.ch</value>
+            </property>
+            <property name="port" type="unsignedInt">
+              <value>44500</value>
+            </property>
+          </property>
+          <!--<property name="struct" type="structure">-->
+            <!--<property name="fedId" type="unsignedInt">-->
+              <!--<value>106</value>-->
+            <!--</property>-->
+            <!--<property name="hostname" type="string">-->
+              <!--<value>cmsuptracker001.cern.ch</value>-->
+            <!--</property>-->
+            <!--<property name="port" type="unsignedInt">-->
+              <!--<value>44550</value>-->
+            <!--</property>-->
+          <!--</property>-->
+          <!--<property name="struct" type="structure">-->
+            <!--<property name="fedId" type="unsignedInt">-->
+              <!--<value>107</value>-->
+            <!--</property>-->
+            <!--<property name="hostname" type="string">-->
+              <!--<value>cmsuptracker001.cern.ch</value>-->
+            <!--</property>-->
+            <!--<property name="port" type="unsignedInt">-->
+              <!--<value>44551</value>-->
+            <!--</property>-->
+          <!--</property>-->
+          <!--<property name="struct" type="structure">-->
+            <!--<property name="fedId" type="unsignedInt">-->
+              <!--<value>108</value>-->
+            <!--</property>-->
+            <!--<property name="hostname" type="string">-->
+              <!--<value>cmsuptracker001.cern.ch</value>-->
+            <!--</property>-->
+            <!--<property name="port" type="unsignedInt">-->
+              <!--<value>44552</value>-->
+            <!--</property>-->
+          <!--</property>-->
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="pt::blit::Application" hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=50" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libtcpla.so lib/libptblit.so" xdaqPath="/opt/xdaq" instance="1">
+        <property name="maxClients" type="unsignedInt">
+          <value>32</value>
+        </property>
+        <property name="maxReceiveBuffers" type="unsignedInt">
+          <value>128</value>
+        </property>
+        <property name="maxBlockSize" type="unsignedInt">
+          <value>131072</value>
+        </property>
+      </XdaqApplication>
+      <XdaqExecutive hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="3" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xtaldaq" environmentString="PATH=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/bin:/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/trackerDAQ/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/gcc/4.6.2/lib64:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/external/slc6_amd64_gcc462/lib:/opt/cmsswLocal/lib: DIM_DNS_NODE=cmstracker037 ENV_CMS_TK_FEC_ROOT=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ  HOME=/home/xdaqtk CONFDB=cms_tracker_tif3/fjrElal97@cms_sstracker ORACLE_HOME=/opt/deps/slc4_ia32_gcc345/external/oracle/10.2.0.2 TNS_ADMIN=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/oracle-env/29/etc ENV_CMS_TK_ORACLE_HOME=${ORACLE_HOME} ENV_CMS_TK_PARTITION=CR_27-FEB-2012_3 ENV_CMS_TK_CAEN_ROOT=/usr/local ENV_CMS_TK_HARDWARE_ROOT=/opt/trackerDAQ ENV_CMS_TK_APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_SBS_ROOT=/opt/trackerDAQ ENV_CMS_TK_HAL_ROOT=/opt/xdaq APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_DIAG_ROOT=/opt/trackerDAQ HOSTNAME=cmstracker007.cern.ch SCRATCH=/opt/cmssw/Data XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr ENV_TRACKER_DAQ=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ SEAL_PLUGINS=/opt/cmsswLocal/module CMSSW_BASE=/opt/cmsswLocal CMSSW_VERSION=CMSSW_3_2_5 POOL_OUTMSG_LEVEL=4 POOL_STORAGESVC_DB_AGE_LIMIT=10 SEAL=/exports/slc5/CMSSW/Base/slc5_amd64_gcc434/cms/seal/SEAL_1_9_4-cms22 SEAL_KEEP_MODULES=true CMSSW_SEARCH_PATH=/opt/cmsswLocal/src/ PYTHONPATHX=/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/python:/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/python:/exports/slc6ptu/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python-ldap/2.3.5-cms3/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyqt/4.8.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-scipy/0.8.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-matplotlib/1.0.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/sip/4.11.2-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-pycurl/7.19.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-numpy/1.6.1-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-lint/0.25.1-cms2/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-ipython/0.10-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cx-oracle/5.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cjson/1.0.5-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/das-client/1.4.1-cms3/bin:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/elementtree/1.2.6-cms4/share/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/rivet/1.5.1-cms8/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyminuit2/0.0.1-cms14/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/professor/1.0.0-cms15/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/lcg/root/5.34.01-cms4/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib/DBSAPI PYTHONPATH=/opt/cmsswLocal/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/lib/python2.7/">
+        <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
+  &lt;i2o:protocol xmlns:i2o="http://xdaq.web.cern.ch/xdaq/xsd/2004/I2OConfiguration-30"&gt;&#xD;
+    <!--&lt;i2o:target class="TrackerManager" instance="0" tid="105" /&gt;&#xD;-->
+    &lt;i2o:target class="evb::BU" instance="0" tid="118" /&gt;&#xD;
+    &lt;i2o:target class="evb::EVM" instance="0" tid="117" /&gt;&#xD;
+    &lt;i2o:target class="pt::blit::Application" instance="1" tid="116" /&gt;&#xD;
+  &lt;/i2o:protocol&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptrackerdaq.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptrackerdaq.cern.ch" network="crackatcp" port="31800" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptrackerdaq.cern.ch" network="crackbtcp" port="39800" protocol="btcp" service="blit" maxbulksize="131072" rcvTimeout="2000" rmode="select" singleThread="true" sndTimeout="2000" /&gt;&#xD;
+    &lt;xc:Application class="pt::blit::Application" id="50" instance="1" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:pt::blit::Application" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;maxClients xsi:type="xsd:unsignedInt"&gt;32&lt;/maxClients&gt;&#xD;
+        &lt;maxReceiveBuffers xsi:type="xsd:unsignedInt"&gt;128&lt;/maxReceiveBuffers&gt;&#xD;
+        &lt;maxBlockSize xsi:type="xsd:unsignedInt"&gt;131072&lt;/maxBlockSize&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="evb::EVM" id="51" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:evb::EVM" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;inputSource xsi:type="xsd:string"&gt;Socket&lt;/inputSource&gt;&#xD;
+        &lt;fakeLumiSectionDuration xsi:type="xsd:unsignedInt"&gt;20&lt;/fakeLumiSectionDuration&gt;&#xD;
+        &lt;fedSourceIds soapenc:arrayType="xsd:ur-type[4]" xsi:type="soapenc:Array"&gt;&#xD;
+          &lt;item soapenc:position="[0]" xsi:type="xsd:unsignedInt"&gt;105&lt;/item&gt;&#xD;
+          &lt;item soapenc:position="[1]" xsi:type="xsd:unsignedInt"&gt;106&lt;/item&gt;&#xD;
+          &lt;item soapenc:position="[2]" xsi:type="xsd:unsignedInt"&gt;107&lt;/item&gt;&#xD;
+          &lt;item soapenc:position="[3]" xsi:type="xsd:unsignedInt"&gt;108&lt;/item&gt;&#xD;
+        &lt;/fedSourceIds&gt;&#xD;
+        &lt;ferolSources soapenc:arrayType="xsd:ur-type[4]" xsi:type="soapenc:Array"&gt;&#xD;
+          &lt;item soapenc:position="[0]" xsi:type="soapenc:Struct"&gt;&#xD;
+            &lt;fedId xsi:type="xsd:unsignedInt"&gt;105&lt;/fedId&gt;&#xD;
+            &lt;hostname xsi:type="xsd:string"&gt;cmsuptracker001.cern.ch&lt;/hostname&gt;&#xD;
+            &lt;port xsi:type="xsd:unsignedInt"&gt;44549&lt;/port&gt;&#xD;
+          &lt;/item&gt;&#xD;
+          &lt;item soapenc:position="[1]" xsi:type="soapenc:Struct"&gt;&#xD;
+            &lt;fedId xsi:type="xsd:unsignedInt"&gt;106&lt;/fedId&gt;&#xD;
+            &lt;hostname xsi:type="xsd:string"&gt;cmsuptracker001.cern.ch&lt;/hostname&gt;&#xD;
+            &lt;port xsi:type="xsd:unsignedInt"&gt;44550&lt;/port&gt;&#xD;
+          &lt;/item&gt;&#xD;
+          &lt;item soapenc:position="[2]" xsi:type="soapenc:Struct"&gt;&#xD;
+            &lt;fedId xsi:type="xsd:unsignedInt"&gt;107&lt;/fedId&gt;&#xD;
+            &lt;hostname xsi:type="xsd:string"&gt;cmsuptracker001.cern.ch&lt;/hostname&gt;&#xD;
+            &lt;port xsi:type="xsd:unsignedInt"&gt;44551&lt;/port&gt;&#xD;
+          &lt;/item&gt;&#xD;
+          &lt;item soapenc:position="[3]" xsi:type="soapenc:Struct"&gt;&#xD;
+            &lt;fedId xsi:type="xsd:unsignedInt"&gt;108&lt;/fedId&gt;&#xD;
+            &lt;hostname xsi:type="xsd:string"&gt;cmsuptracker001.cern.ch&lt;/hostname&gt;&#xD;
+            &lt;port xsi:type="xsd:unsignedInt"&gt;44552&lt;/port&gt;&#xD;
+          &lt;/item&gt;&#xD;
+        &lt;/ferolSources&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="evb::BU" id="52" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:evb::BU" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;ignoreResourceSummary xsi:type="xsd:boolean"&gt;true&lt;/ignoreResourceSummary&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libtcpla.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libptblit.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libxdaq2rc.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libevb.so&lt;/xc:Module&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmstracker035.cern.ch:8081/rcms"&gt;&#xD;
+    &lt;xc:Application class="RCMSStateListener" id="50" instance="0" network="local" path="/services/replycommandreceiver" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41803"&gt;&#xD;
+    &lt;xc:Application class="TrackerManager" id="50" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31801" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+&lt;/xc:Partition&gt;</configFile>
+      </XdaqExecutive>
+      <XdaqApplication className="pt::blit::Application" hostname="cmsuptracker001.cern.ch" port="41801" urn="/urn:xdaq-application:lid=50" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libtcpla.so lib/libptblit.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="maxClients" type="unsignedInt">
+          <value>32</value>
+        </property>
+        <property name="maxReceiveBuffers" type="unsignedInt">
+          <value>128</value>
+        </property>
+        <property name="maxBlockSize" type="unsignedInt">
+          <value>131072</value>
+        </property>
+      </XdaqApplication>
+    </FunctionManager>
+    <FunctionManager name="FedStateMachine" hostname="cmstracker035.cern.ch" port="8080" qualifiedResourceType="rcms.fm.resource.qualifiedresource.FunctionManager" role="TRACKER" sourceURL="http://cmstracker035.cern.ch:8080/statemachines/evbFSMtest.jar" className="rcms.fsm.tkfsm.StateMachine">
+      <XdaqExecutive hostname="cmsuptracker001.cern.ch" port="41802" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="2" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xdaqtk" environmentString="PATH=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/bin:/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/trackerDAQ/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/gcc/4.6.2/lib64:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/external/slc6_amd64_gcc462/lib:/opt/cmsswLocal/lib: DIM_DNS_NODE=cmstracker037 ENV_CMS_TK_FEC_ROOT=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ  HOME=/home/xdaqtk CONFDB=cms_tracker_tif3/fjrElal97@cms_sstracker ORACLE_HOME=/opt/deps/slc4_ia32_gcc345/external/oracle/10.2.0.2 TNS_ADMIN=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/oracle-env/29/etc ENV_CMS_TK_ORACLE_HOME=${ORACLE_HOME} ENV_CMS_TK_PARTITION=CR_27-FEB-2012_3 ENV_CMS_TK_CAEN_ROOT=/usr/local ENV_CMS_TK_HARDWARE_ROOT=/opt/trackerDAQ ENV_CMS_TK_APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_SBS_ROOT=/opt/trackerDAQ ENV_CMS_TK_HAL_ROOT=/opt/xdaq APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_DIAG_ROOT=/opt/trackerDAQ HOSTNAME=cmstracker007.cern.ch SCRATCH=/opt/cmssw/Data XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr ENV_TRACKER_DAQ=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ SEAL_PLUGINS=/opt/cmsswLocal/module CMSSW_BASE=/opt/cmsswLocal CMSSW_VERSION=CMSSW_3_2_5 POOL_OUTMSG_LEVEL=4 POOL_STORAGESVC_DB_AGE_LIMIT=10 SEAL=/exports/slc5/CMSSW/Base/slc5_amd64_gcc434/cms/seal/SEAL_1_9_4-cms22 SEAL_KEEP_MODULES=true CMSSW_SEARCH_PATH=/opt/cmsswLocal/src/ PYTHONPATHX=/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/python:/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/python:/exports/slc6ptu/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python-ldap/2.3.5-cms3/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyqt/4.8.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-scipy/0.8.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-matplotlib/1.0.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/sip/4.11.2-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-pycurl/7.19.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-numpy/1.6.1-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-lint/0.25.1-cms2/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-ipython/0.10-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cx-oracle/5.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cjson/1.0.5-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/das-client/1.4.1-cms3/bin:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/elementtree/1.2.6-cms4/share/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/rivet/1.5.1-cms8/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyminuit2/0.0.1-cms14/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/professor/1.0.0-cms15/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/lcg/root/5.34.01-cms4/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib/DBSAPI PYTHONPATH=/opt/cmsswLocal/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/lib/python2.7/">
+        <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
+  &lt;i2o:protocol xmlns:i2o="http://xdaq.web.cern.ch/xdaq/xsd/2004/I2OConfiguration-30"&gt;&#xD;
+    &lt;i2o:target class="DataBaseCache" instance="1" tid="109" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="0" tid="114" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="1" tid="113" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="2" tid="112" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="3" tid="115" /&gt;&#xD;
+    &lt;i2o:target class="TrackerManager" instance="0" tid="105" /&gt;&#xD;
+  &lt;/i2o:protocol&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41802"&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31803" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+    &lt;xc:Application class="DataBaseCache" id="50" instance="1" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:DataBaseCache" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;FEDShareMemoryName xsi:type="xsd:string"&gt;FEDSM00&lt;/FEDShareMemoryName&gt;&#xD;
+        &lt;FECShareMemoryName xsi:type="xsd:string"&gt;FECSM00&lt;/FECShareMemoryName&gt;&#xD;
+        &lt;CONShareMemoryName xsi:type="xsd:string"&gt;CONSM00&lt;/CONShareMemoryName&gt;&#xD;
+        &lt;FEDShareMemorySize xsi:type="xsd:unsignedLong"&gt;245366784&lt;/FEDShareMemorySize&gt;&#xD;
+        &lt;FECShareMemorySize xsi:type="xsd:unsignedLong"&gt;33554432&lt;/FECShareMemorySize&gt;&#xD;
+        &lt;CONShareMemorySize xsi:type="xsd:unsignedLong"&gt;4194304&lt;/CONShareMemorySize&gt;&#xD;
+        &lt;DownloadFEC xsi:type="xsd:boolean"&gt;true&lt;/DownloadFEC&gt;&#xD;
+        &lt;DownloadCON xsi:type="xsd:boolean"&gt;true&lt;/DownloadCON&gt;&#xD;
+        &lt;commonMemory xsi:type="xsd:boolean"&gt;true&lt;/commonMemory&gt;&#xD;
+        &lt;DownloadFED xsi:type="xsd:boolean"&gt;true&lt;/DownloadFED&gt;&#xD;
+        &lt;ForwardFEDDescription xsi:type="xsd:boolean"&gt;true&lt;/ForwardFEDDescription&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="Fed9USupervisor" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libDataBaseCache.so&lt;/xc:Module&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41801"&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="55" instance="3" network="local" /&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="52" instance="2" network="local" /&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="53" instance="1" network="local" /&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="54" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31804" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41803"&gt;&#xD;
+    &lt;xc:Application class="TrackerManager" id="50" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31801" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41804"&gt;&#xD;
+    &lt;xc:Application class="GlobalErrorDispatcher" id="51" instance="0" network="local" service="GlobalErrorDispatcher" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+&lt;/xc:Partition&gt;</configFile>
+      </XdaqExecutive>
+      <XdaqApplication className="Fed9USupervisor" hostname="cmsuptracker001.cern.ch" port="41801" urn="/urn:xdaq-application:lid=55" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so /opt/trackerDAQ/lib/libFed9USupervisor.so" xdaqPath="/opt/xdaq" instance="3">
+        <property name="UsingTTCGlobalSkew" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="usingDb" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="UsingStrips" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="nextInstance" type="integer">
+          <value>-1</value>
+        </property>
+        <property name="nextName" type="string">
+          <value>Fed9USupervisor</value>
+        </property>
+        <property name="BlockModeReadout" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="checkEventPeriod" type="integer">
+          <value>1000</value>
+        </property>
+        <property name="ShareName" type="string">
+          <value>FEDSM00</value>
+        </property>
+        <property name="standalone" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="UsingFakeEvent" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="UseDiagSystem" type="string">
+          <value>default</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/raid/diagSettings/fed9USupervisor.set</value>
+        </property>
+        <property name="IgnoreTrackerSupModeChange" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="SpyShmWriting" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="FedID" type="unsignedShort">
+          <value>108</value>
+        </property>
+        <property name="AdapterSlot" type="unsignedLong">
+          <value>1</value>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="Fed9USupervisor" hostname="cmsuptracker001.cern.ch" port="41801" urn="/urn:xdaq-application:lid=54" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so /opt/trackerDAQ/lib/libFed9USupervisor.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="UsingTTCGlobalSkew" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="usingDb" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="UsingStrips" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="nextInstance" type="integer">
+          <value>-1</value>
+        </property>
+        <property name="nextName" type="string">
+          <value>Fed9USupervisor</value>
+        </property>
+        <property name="BlockModeReadout" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="checkEventPeriod" type="integer">
+          <value>1000</value>
+        </property>
+        <property name="ShareName" type="string">
+          <value>FEDSM00</value>
+        </property>
+        <property name="standalone" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="UsingFakeEvent" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="UseDiagSystem" type="string">
+          <value>default</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/raid/diagSettings/fed9USupervisor.set</value>
+        </property>
+        <property name="IgnoreTrackerSupModeChange" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="SpyShmWriting" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="FedID" type="unsignedShort">
+          <value>105</value>
+        </property>
+        <property name="AdapterSlot" type="unsignedLong">
+          <value>1</value>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="Fed9USupervisor" hostname="cmsuptracker001.cern.ch" port="41801" urn="/urn:xdaq-application:lid=53" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so /opt/trackerDAQ/lib/libFed9USupervisor.so" xdaqPath="/opt/xdaq" instance="1">
+        <property name="UsingTTCGlobalSkew" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="usingDb" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="UsingStrips" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="nextInstance" type="integer">
+          <value>-1</value>
+        </property>
+        <property name="nextName" type="string">
+          <value>Fed9USupervisor</value>
+        </property>
+        <property name="BlockModeReadout" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="checkEventPeriod" type="integer">
+          <value>1000</value>
+        </property>
+        <property name="ShareName" type="string">
+          <value>FEDSM00</value>
+        </property>
+        <property name="standalone" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="UsingFakeEvent" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="UseDiagSystem" type="string">
+          <value>default</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/raid/diagSettings/fed9USupervisor.set</value>
+        </property>
+        <property name="IgnoreTrackerSupModeChange" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="SpyShmWriting" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="FedID" type="unsignedShort">
+          <value>106</value>
+        </property>
+        <property name="AdapterSlot" type="unsignedLong">
+          <value>1</value>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="Fed9USupervisor" hostname="cmsuptracker001.cern.ch" port="41801" urn="/urn:xdaq-application:lid=52" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so /opt/trackerDAQ/lib/libFed9USupervisor.so" xdaqPath="/opt/xdaq" instance="2">
+        <property name="UsingTTCGlobalSkew" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="usingDb" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="UsingStrips" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="nextInstance" type="integer">
+          <value>-1</value>
+        </property>
+        <property name="nextName" type="string">
+          <value>Fed9USupervisor</value>
+        </property>
+        <property name="BlockModeReadout" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="checkEventPeriod" type="integer">
+          <value>1000</value>
+        </property>
+        <property name="ShareName" type="string">
+          <value>FEDSM00</value>
+        </property>
+        <property name="standalone" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="UsingFakeEvent" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="UseDiagSystem" type="string">
+          <value>default</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/raid/diagSettings/fed9USupervisor.set</value>
+        </property>
+        <property name="IgnoreTrackerSupModeChange" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="SpyShmWriting" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="FedID" type="unsignedShort">
+          <value>107</value>
+        </property>
+        <property name="AdapterSlot" type="unsignedLong">
+          <value>1</value>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="DS" hostname="cmsuptracker001.cern.ch" port="41801" urn="/urn:xdaq-application:lid=51" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/trackerDAQ/lib/libDS.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="sourceHost" type="string">
+          <value>cmsuptracker001.cern.ch</value>
+        </property>
+        <property name="sourcePort" type="integer">
+          <value>44444</value>
+        </property>
+        <property name="destinationHost" type="string">
+          <value>cmstracker038.cern.ch</value>
+        </property>
+        <property name="destinationPort" type="integer">
+          <value>39800</value>
+        </property>
+        <property name="continuePushing" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="nextInstance" type="integer">
+          <value>-1</value>
+        </property>
+        <property name="nextName" type="string">
+          <value>Fed9USupervisor</value>
+        </property>
+        <property name="RUName" type="string">
+          <value>rubuilder::ru::Application</value>
+        </property>
+        <property name="UsePolling" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="SwapFedData" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="ShmPrefix" type="string">
+          <value>Fed9UWorkLoop</value>
+        </property>
+        <property name="RU" type="integer">
+          <value>-1</value>
+        </property>
+        <property name="UseDiagSystem" type="string">
+          <value>tuned</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/opt/trackerDAQ/config/clientApp.set</value>
+        </property>
+      </XdaqApplication>
+      <XdaqExecutive hostname="cmsuptracker001.cern.ch" port="41801" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="1" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xdaqtk" environmentString="PATH=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/bin:/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/trackerDAQ/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/gcc/4.6.2/lib64:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/external/slc6_amd64_gcc462/lib:/opt/cmsswLocal/lib: DIM_DNS_NODE=cmstracker037 ENV_CMS_TK_FEC_ROOT=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ  HOME=/home/xdaqtk CONFDB=cms_tracker_tif3/fjrElal97@cms_sstracker ORACLE_HOME=/opt/deps/slc4_ia32_gcc345/external/oracle/10.2.0.2 TNS_ADMIN=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/oracle-env/29/etc ENV_CMS_TK_ORACLE_HOME=${ORACLE_HOME} ENV_CMS_TK_PARTITION=CR_27-FEB-2012_3 ENV_CMS_TK_CAEN_ROOT=/usr/local ENV_CMS_TK_HARDWARE_ROOT=/opt/trackerDAQ ENV_CMS_TK_APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_SBS_ROOT=/opt/trackerDAQ ENV_CMS_TK_HAL_ROOT=/opt/xdaq APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_DIAG_ROOT=/opt/trackerDAQ HOSTNAME=cmstracker007.cern.ch SCRATCH=/opt/cmssw/Data XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr ENV_TRACKER_DAQ=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ SEAL_PLUGINS=/opt/cmsswLocal/module CMSSW_BASE=/opt/cmsswLocal CMSSW_VERSION=CMSSW_3_2_5 POOL_OUTMSG_LEVEL=4 POOL_STORAGESVC_DB_AGE_LIMIT=10 SEAL=/exports/slc5/CMSSW/Base/slc5_amd64_gcc434/cms/seal/SEAL_1_9_4-cms22 SEAL_KEEP_MODULES=true CMSSW_SEARCH_PATH=/opt/cmsswLocal/src/ PYTHONPATHX=/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/python:/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/python:/exports/slc6ptu/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python-ldap/2.3.5-cms3/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyqt/4.8.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-scipy/0.8.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-matplotlib/1.0.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/sip/4.11.2-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-pycurl/7.19.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-numpy/1.6.1-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-lint/0.25.1-cms2/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-ipython/0.10-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cx-oracle/5.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cjson/1.0.5-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/das-client/1.4.1-cms3/bin:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/elementtree/1.2.6-cms4/share/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/rivet/1.5.1-cms8/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyminuit2/0.0.1-cms14/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/professor/1.0.0-cms15/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/lcg/root/5.34.01-cms4/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib/DBSAPI PYTHONPATH=/opt/cmsswLocal/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/lib/python2.7/">
+        <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
+  &lt;i2o:protocol xmlns:i2o="http://xdaq.web.cern.ch/xdaq/xsd/2004/I2OConfiguration-30"&gt;&#xD;
+    &lt;i2o:target class="DS" instance="0" tid="111" /&gt;&#xD;
+    &lt;i2o:target class="DataBaseCache" instance="1" tid="109" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="0" tid="114" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="1" tid="113" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="2" tid="112" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="3" tid="115" /&gt;&#xD;
+    &lt;i2o:target class="TrackerManager" instance="0" tid="105" /&gt;&#xD;
+    &lt;i2o:target class="evb::EVM" instance="0" tid="117" /&gt;&#xD;
+    &lt;i2o:target class="pt::blit::Application" instance="0" tid="110" /&gt;&#xD;
+  &lt;/i2o:protocol&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41801"&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31804" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackbtcp" port="39800" protocol="btcp" service="blit" maxbulksize="131072" rcvTimeout="2000" rmode="select" singleThread="true" sndTimeout="2000" /&gt;&#xD;
+    &lt;xc:Application class="pt::blit::Application" id="50" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:pt::blit::Application" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;maxClients xsi:type="xsd:unsignedInt"&gt;32&lt;/maxClients&gt;&#xD;
+        &lt;maxReceiveBuffers xsi:type="xsd:unsignedInt"&gt;128&lt;/maxReceiveBuffers&gt;&#xD;
+        &lt;maxBlockSize xsi:type="xsd:unsignedInt"&gt;131072&lt;/maxBlockSize&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="DS" id="51" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:DS" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;sourceHost xsi:type="xsd:string"&gt;cmsuptracker001.cern.ch&lt;/sourceHost&gt;&#xD;
+        &lt;sourcePort xsi:type="xsd:integer"&gt;44444&lt;/sourcePort&gt;&#xD;
+        &lt;destinationHost xsi:type="xsd:string"&gt;cmstracker038.cern.ch&lt;/destinationHost&gt;&#xD;
+        &lt;destinationPort xsi:type="xsd:integer"&gt;39800&lt;/destinationPort&gt;&#xD;
+        &lt;continuePushing xsi:type="xsd:boolean"&gt;true&lt;/continuePushing&gt;&#xD;
+        &lt;nextInstance xsi:type="xsd:integer"&gt;-1&lt;/nextInstance&gt;&#xD;
+        &lt;nextName xsi:type="xsd:string"&gt;Fed9USupervisor&lt;/nextName&gt;&#xD;
+        &lt;RUName xsi:type="xsd:string"&gt;rubuilder::ru::Application&lt;/RUName&gt;&#xD;
+        &lt;UsePolling xsi:type="xsd:boolean"&gt;true&lt;/UsePolling&gt;&#xD;
+        &lt;SwapFedData xsi:type="xsd:boolean"&gt;true&lt;/SwapFedData&gt;&#xD;
+        &lt;ShmPrefix xsi:type="xsd:string"&gt;Fed9UWorkLoop&lt;/ShmPrefix&gt;&#xD;
+        &lt;RU xsi:type="xsd:integer"&gt;-1&lt;/RU&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;tuned&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/opt/trackerDAQ/config/clientApp.set&lt;/DiagSystemSettings&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="evb::EVM" network="crackbtcp" /&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="52" instance="2" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:Fed9USupervisor" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;UsingTTCGlobalSkew xsi:type="xsd:boolean"&gt;false&lt;/UsingTTCGlobalSkew&gt;&#xD;
+        &lt;usingDb xsi:type="xsd:boolean"&gt;true&lt;/usingDb&gt;&#xD;
+        &lt;UsingStrips xsi:type="xsd:boolean"&gt;true&lt;/UsingStrips&gt;&#xD;
+        &lt;nextInstance xsi:type="xsd:integer"&gt;-1&lt;/nextInstance&gt;&#xD;
+        &lt;nextName xsi:type="xsd:string"&gt;Fed9USupervisor&lt;/nextName&gt;&#xD;
+        &lt;BlockModeReadout xsi:type="xsd:boolean"&gt;true&lt;/BlockModeReadout&gt;&#xD;
+        &lt;checkEventPeriod xsi:type="xsd:integer"&gt;1000&lt;/checkEventPeriod&gt;&#xD;
+        &lt;ShareName xsi:type="xsd:string"&gt;FEDSM00&lt;/ShareName&gt;&#xD;
+        &lt;standalone xsi:type="xsd:boolean"&gt;false&lt;/standalone&gt;&#xD;
+        &lt;UsingFakeEvent xsi:type="xsd:boolean"&gt;false&lt;/UsingFakeEvent&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;default&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/raid/diagSettings/fed9USupervisor.set&lt;/DiagSystemSettings&gt;&#xD;
+        &lt;IgnoreTrackerSupModeChange xsi:type="xsd:boolean"&gt;false&lt;/IgnoreTrackerSupModeChange&gt;&#xD;
+        &lt;SpyShmWriting xsi:type="xsd:boolean"&gt;false&lt;/SpyShmWriting&gt;&#xD;
+        &lt;FedID xsi:type="xsd:unsignedShort"&gt;107&lt;/FedID&gt;&#xD;
+        &lt;AdapterSlot xsi:type="xsd:unsignedLong"&gt;1&lt;/AdapterSlot&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="DataBaseCache" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="53" instance="1" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:Fed9USupervisor" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;UsingTTCGlobalSkew xsi:type="xsd:boolean"&gt;false&lt;/UsingTTCGlobalSkew&gt;&#xD;
+        &lt;usingDb xsi:type="xsd:boolean"&gt;true&lt;/usingDb&gt;&#xD;
+        &lt;UsingStrips xsi:type="xsd:boolean"&gt;true&lt;/UsingStrips&gt;&#xD;
+        &lt;nextInstance xsi:type="xsd:integer"&gt;-1&lt;/nextInstance&gt;&#xD;
+        &lt;nextName xsi:type="xsd:string"&gt;Fed9USupervisor&lt;/nextName&gt;&#xD;
+        &lt;BlockModeReadout xsi:type="xsd:boolean"&gt;true&lt;/BlockModeReadout&gt;&#xD;
+        &lt;checkEventPeriod xsi:type="xsd:integer"&gt;1000&lt;/checkEventPeriod&gt;&#xD;
+        &lt;ShareName xsi:type="xsd:string"&gt;FEDSM00&lt;/ShareName&gt;&#xD;
+        &lt;standalone xsi:type="xsd:boolean"&gt;false&lt;/standalone&gt;&#xD;
+        &lt;UsingFakeEvent xsi:type="xsd:boolean"&gt;false&lt;/UsingFakeEvent&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;default&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/raid/diagSettings/fed9USupervisor.set&lt;/DiagSystemSettings&gt;&#xD;
+        &lt;IgnoreTrackerSupModeChange xsi:type="xsd:boolean"&gt;false&lt;/IgnoreTrackerSupModeChange&gt;&#xD;
+        &lt;SpyShmWriting xsi:type="xsd:boolean"&gt;false&lt;/SpyShmWriting&gt;&#xD;
+        &lt;FedID xsi:type="xsd:unsignedShort"&gt;106&lt;/FedID&gt;&#xD;
+        &lt;AdapterSlot xsi:type="xsd:unsignedLong"&gt;1&lt;/AdapterSlot&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="DataBaseCache" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="54" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:Fed9USupervisor" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;UsingTTCGlobalSkew xsi:type="xsd:boolean"&gt;false&lt;/UsingTTCGlobalSkew&gt;&#xD;
+        &lt;usingDb xsi:type="xsd:boolean"&gt;true&lt;/usingDb&gt;&#xD;
+        &lt;UsingStrips xsi:type="xsd:boolean"&gt;true&lt;/UsingStrips&gt;&#xD;
+        &lt;nextInstance xsi:type="xsd:integer"&gt;-1&lt;/nextInstance&gt;&#xD;
+        &lt;nextName xsi:type="xsd:string"&gt;Fed9USupervisor&lt;/nextName&gt;&#xD;
+        &lt;BlockModeReadout xsi:type="xsd:boolean"&gt;true&lt;/BlockModeReadout&gt;&#xD;
+        &lt;checkEventPeriod xsi:type="xsd:integer"&gt;1000&lt;/checkEventPeriod&gt;&#xD;
+        &lt;ShareName xsi:type="xsd:string"&gt;FEDSM00&lt;/ShareName&gt;&#xD;
+        &lt;standalone xsi:type="xsd:boolean"&gt;false&lt;/standalone&gt;&#xD;
+        &lt;UsingFakeEvent xsi:type="xsd:boolean"&gt;false&lt;/UsingFakeEvent&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;default&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/raid/diagSettings/fed9USupervisor.set&lt;/DiagSystemSettings&gt;&#xD;
+        &lt;IgnoreTrackerSupModeChange xsi:type="xsd:boolean"&gt;false&lt;/IgnoreTrackerSupModeChange&gt;&#xD;
+        &lt;SpyShmWriting xsi:type="xsd:boolean"&gt;false&lt;/SpyShmWriting&gt;&#xD;
+        &lt;FedID xsi:type="xsd:unsignedShort"&gt;105&lt;/FedID&gt;&#xD;
+        &lt;AdapterSlot xsi:type="xsd:unsignedLong"&gt;1&lt;/AdapterSlot&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="DataBaseCache" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="55" instance="3" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:Fed9USupervisor" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;UsingTTCGlobalSkew xsi:type="xsd:boolean"&gt;false&lt;/UsingTTCGlobalSkew&gt;&#xD;
+        &lt;usingDb xsi:type="xsd:boolean"&gt;true&lt;/usingDb&gt;&#xD;
+        &lt;UsingStrips xsi:type="xsd:boolean"&gt;true&lt;/UsingStrips&gt;&#xD;
+        &lt;nextInstance xsi:type="xsd:integer"&gt;-1&lt;/nextInstance&gt;&#xD;
+        &lt;nextName xsi:type="xsd:string"&gt;Fed9USupervisor&lt;/nextName&gt;&#xD;
+        &lt;BlockModeReadout xsi:type="xsd:boolean"&gt;true&lt;/BlockModeReadout&gt;&#xD;
+        &lt;checkEventPeriod xsi:type="xsd:integer"&gt;1000&lt;/checkEventPeriod&gt;&#xD;
+        &lt;ShareName xsi:type="xsd:string"&gt;FEDSM00&lt;/ShareName&gt;&#xD;
+        &lt;standalone xsi:type="xsd:boolean"&gt;false&lt;/standalone&gt;&#xD;
+        &lt;UsingFakeEvent xsi:type="xsd:boolean"&gt;false&lt;/UsingFakeEvent&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;default&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/raid/diagSettings/fed9USupervisor.set&lt;/DiagSystemSettings&gt;&#xD;
+        &lt;IgnoreTrackerSupModeChange xsi:type="xsd:boolean"&gt;false&lt;/IgnoreTrackerSupModeChange&gt;&#xD;
+        &lt;SpyShmWriting xsi:type="xsd:boolean"&gt;false&lt;/SpyShmWriting&gt;&#xD;
+        &lt;FedID xsi:type="xsd:unsignedShort"&gt;108&lt;/FedID&gt;&#xD;
+        &lt;AdapterSlot xsi:type="xsd:unsignedLong"&gt;1&lt;/AdapterSlot&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="DataBaseCache" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libtcpla.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libptblit.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libDS.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libxdaq2rc.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libFed9USupervisor.so&lt;/xc:Module&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmstracker035.cern.ch:8081/rcms"&gt;&#xD;
+    &lt;xc:Application class="RCMSStateListener" id="50" instance="0" network="local" path="/services/replycommandreceiver" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmstracker038.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Application class="evb::EVM" id="51" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmstracker038.cern.ch" network="crackbtcp" port="39800" protocol="btcp" service="blit" maxbulksize="131072" rcvTimeout="2000" rmode="select" singleThread="true" sndTimeout="2000" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41802"&gt;&#xD;
+    &lt;xc:Application class="DataBaseCache" id="50" instance="1" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31803" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41803"&gt;&#xD;
+    &lt;xc:Application class="TrackerManager" id="50" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31801" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41804"&gt;&#xD;
+    &lt;xc:Application class="GlobalErrorDispatcher" id="51" instance="0" network="local" service="GlobalErrorDispatcher" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+&lt;/xc:Partition&gt;</configFile>
+      </XdaqExecutive>
+      <Service name="JobControl" hostname="cmsuptracker001.cern.ch" port="9999" urn="/urn:xdaq-application:lid=10" qualifiedResourceType="rcms.fm.resource.qualifiedresource.JobControl" />
+      <XdaqApplication className="DataBaseCache" hostname="cmsuptracker001.cern.ch" port="41802" urn="/urn:xdaq-application:lid=50" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/trackerDAQ/lib/libDataBaseCache.so" xdaqPath="/opt/xdaq" instance="1">
+        <property name="FEDShareMemoryName" type="string">
+          <value>FEDSM00</value>
+        </property>
+        <property name="FECShareMemoryName" type="string">
+          <value>FECSM00</value>
+        </property>
+        <property name="CONShareMemoryName" type="string">
+          <value>CONSM00</value>
+        </property>
+        <property name="FEDShareMemorySize" type="unsignedLong">
+          <value>245366784</value>
+        </property>
+        <property name="FECShareMemorySize" type="unsignedLong">
+          <value>33554432</value>
+        </property>
+        <property name="CONShareMemorySize" type="unsignedLong">
+          <value>4194304</value>
+        </property>
+        <property name="DownloadFEC" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="DownloadCON" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="commonMemory" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="DownloadFED" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="ForwardFEDDescription" type="boolean">
+          <value>true</value>
+        </property>
+      </XdaqApplication>
+    </FunctionManager>
+    <FunctionManager name="FecStateMachine" hostname="cmstracker035.cern.ch" port="8080" qualifiedResourceType="rcms.fm.resource.qualifiedresource.FunctionManager" role="TRACKER" sourceURL="http://cmstracker035.cern.ch:8080/statemachines/evbFSMtest.jar" className="rcms.fsm.tkfsm.StateMachine">
+      <Service name="JobControl" hostname="cmsuptracker001.cern.ch" port="9999" urn="/urn:xdaq-application:lid=10" qualifiedResourceType="rcms.fm.resource.qualifiedresource.JobControl" />
+      <XdaqApplication className="DataBaseCache" hostname="cmsuptracker001.cern.ch" port="41800" urn="/urn:xdaq-application:lid=52" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/trackerDAQ/lib/libDataBaseCache.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="FEDShareMemoryName" type="string">
+          <value>FEDSM00</value>
+        </property>
+        <property name="FECShareMemoryName" type="string">
+          <value>FECSM00</value>
+        </property>
+        <property name="CONShareMemoryName" type="string">
+          <value>CONSM00</value>
+        </property>
+        <property name="FEDShareMemorySize" type="unsignedLong">
+          <value>245366784</value>
+        </property>
+        <property name="FECShareMemorySize" type="unsignedLong">
+          <value>33554432</value>
+        </property>
+        <property name="CONShareMemorySize" type="unsignedLong">
+          <value>4194304</value>
+        </property>
+        <property name="DownloadFEC" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="DownloadCON" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="commonMemory" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="DownloadFED" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="ForwardFEDDescription" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="Partition" type="string">
+          <value>CR_27-FEB-2012_3</value>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="FecSupervisor" hostname="cmsuptracker001.cern.ch" port="41800" urn="/urn:xdaq-application:lid=51" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so /opt/trackerDAQ/lib/libFecSupervisor.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="VmeBlockMode" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="FecBusType" type="string">
+          <value>VME_FEC</value>
+        </property>
+        <property name="XMLFileNameInput" type="string">
+          <value>http://cmstracker003/xml/fec.xml</value>
+        </property>
+        <property name="PIAReset" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="FECReset" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="StrBusAdapter" type="string">
+          <value>CAENPCI</value>
+        </property>
+        <property name="SSID" type="string">
+          <value>TRACKER</value>
+        </property>
+        <property name="PartitionName" type="string">
+          <value>TEL2FEDLTC</value>
+        </property>
+        <property name="DCU_Thread_Used" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="DCU_Thread_LoopTime" type="unsignedLong">
+          <value>30</value>
+        </property>
+        <property name="Device_Thread_Used" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="Device_Thread_LoopTime" type="unsignedLong">
+          <value>300</value>
+        </property>
+        <property name="ShareMemoryName" type="string">
+          <value>FECSM00</value>
+        </property>
+        <property name="DcuWorkLoopName" type="string">
+          <value>DCUWORKLOOP_TOB</value>
+        </property>
+        <property name="UseDiagSystem" type="string">
+          <value>default</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/opt/trackerDAQ/config/clientApp.set</value>
+        </property>
+        <property name="DatabaseDownload" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="ForceApplyRedundancy" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="AdapterSlot" type="unsignedLong">
+          <value>1</value>
+        </property>
+        <property name="FECSlot" type="unsignedLong">
+          <value>4</value>
+        </property>
+        <property name="DcuFilterInstance" type="unsignedLong">
+          <value>0</value>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="DcuFilter" hostname="cmsuptracker001.cern.ch" port="41800" urn="/urn:xdaq-application:lid=50" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/trackerDAQ/lib/libDcuFilter.so /opt/trackerDAQ/lib/libDeviceDescriptions.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="TKCCTest" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="UploadPVSS" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="UploadDatabase" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="Conversion" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="ConversionFromFile" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="TimePVSSSend" type="unsignedLong">
+          <value>122</value>
+        </property>
+        <property name="PourcentDifferenceForPVSS" type="unsignedLong">
+          <value>10</value>
+        </property>
+        <property name="PVSSPoint" type="string">
+          <value>cms_trk_dcs_07</value>
+        </property>
+        <property name="DCUPSUChannelDetection" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="PartitionName" type="string">
+          <value>CR_27-FEB-2012_3</value>
+        </property>
+      </XdaqApplication>
+      <XdaqExecutive hostname="cmsuptracker001.cern.ch" port="41800" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="0" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xdaqtk" environmentString="PATH=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/bin:/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/trackerDAQ/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/gcc/4.6.2/lib64:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/external/slc6_amd64_gcc462/lib:/opt/cmsswLocal/lib: DIM_DNS_NODE=cmstracker037 ENV_CMS_TK_FEC_ROOT=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ  HOME=/home/xdaqtk CONFDB=cms_tracker_tif3/fjrElal97@cms_sstracker ORACLE_HOME=/opt/deps/slc4_ia32_gcc345/external/oracle/10.2.0.2 TNS_ADMIN=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/oracle-env/29/etc ENV_CMS_TK_ORACLE_HOME=${ORACLE_HOME} ENV_CMS_TK_PARTITION=CR_27-FEB-2012_3 ENV_CMS_TK_CAEN_ROOT=/usr/local ENV_CMS_TK_HARDWARE_ROOT=/opt/trackerDAQ ENV_CMS_TK_APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_SBS_ROOT=/opt/trackerDAQ ENV_CMS_TK_HAL_ROOT=/opt/xdaq APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_DIAG_ROOT=/opt/trackerDAQ HOSTNAME=cmstracker007.cern.ch SCRATCH=/opt/cmssw/Data XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr ENV_TRACKER_DAQ=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ SEAL_PLUGINS=/opt/cmsswLocal/module CMSSW_BASE=/opt/cmsswLocal CMSSW_VERSION=CMSSW_3_2_5 POOL_OUTMSG_LEVEL=4 POOL_STORAGESVC_DB_AGE_LIMIT=10 SEAL=/exports/slc5/CMSSW/Base/slc5_amd64_gcc434/cms/seal/SEAL_1_9_4-cms22 SEAL_KEEP_MODULES=true CMSSW_SEARCH_PATH=/opt/cmsswLocal/src/ PYTHONPATHX=/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/python:/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/python:/exports/slc6ptu/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python-ldap/2.3.5-cms3/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyqt/4.8.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-scipy/0.8.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-matplotlib/1.0.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/sip/4.11.2-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-pycurl/7.19.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-numpy/1.6.1-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-lint/0.25.1-cms2/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-ipython/0.10-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cx-oracle/5.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cjson/1.0.5-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/das-client/1.4.1-cms3/bin:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/elementtree/1.2.6-cms4/share/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/rivet/1.5.1-cms8/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyminuit2/0.0.1-cms14/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/professor/1.0.0-cms15/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/lcg/root/5.34.01-cms4/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib/DBSAPI PYTHONPATH=/opt/cmsswLocal/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/lib/python2.7/">
+        <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
+  &lt;i2o:protocol xmlns:i2o="http://xdaq.web.cern.ch/xdaq/xsd/2004/I2OConfiguration-30"&gt;&#xD;
+    &lt;i2o:target class="DataBaseCache" instance="0" tid="108" /&gt;&#xD;
+    &lt;i2o:target class="DcuFilter" instance="0" tid="106" /&gt;&#xD;
+    &lt;i2o:target class="FecSupervisor" instance="0" tid="107" /&gt;&#xD;
+    &lt;i2o:target class="TrackerManager" instance="0" tid="105" /&gt;&#xD;
+  &lt;/i2o:protocol&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31802" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+    &lt;xc:Application class="DcuFilter" id="50" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:DcuFilter" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;TKCCTest xsi:type="xsd:boolean"&gt;true&lt;/TKCCTest&gt;&#xD;
+        &lt;UploadPVSS xsi:type="xsd:boolean"&gt;false&lt;/UploadPVSS&gt;&#xD;
+        &lt;UploadDatabase xsi:type="xsd:boolean"&gt;true&lt;/UploadDatabase&gt;&#xD;
+        &lt;Conversion xsi:type="xsd:boolean"&gt;true&lt;/Conversion&gt;&#xD;
+        &lt;ConversionFromFile xsi:type="xsd:boolean"&gt;false&lt;/ConversionFromFile&gt;&#xD;
+        &lt;TimePVSSSend xsi:type="xsd:unsignedLong"&gt;122&lt;/TimePVSSSend&gt;&#xD;
+        &lt;PourcentDifferenceForPVSS xsi:type="xsd:unsignedLong"&gt;10&lt;/PourcentDifferenceForPVSS&gt;&#xD;
+        &lt;PVSSPoint xsi:type="xsd:string"&gt;cms_trk_dcs_07&lt;/PVSSPoint&gt;&#xD;
+        &lt;DCUPSUChannelDetection xsi:type="xsd:boolean"&gt;false&lt;/DCUPSUChannelDetection&gt;&#xD;
+        &lt;PartitionName xsi:type="xsd:string"&gt;CR_27-FEB-2012_3&lt;/PartitionName&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="FecSupervisor" id="51" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:FecSupervisor" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;VmeBlockMode xsi:type="xsd:boolean"&gt;true&lt;/VmeBlockMode&gt;&#xD;
+        &lt;FecBusType xsi:type="xsd:string"&gt;VME_FEC&lt;/FecBusType&gt;&#xD;
+        &lt;XMLFileNameInput xsi:type="xsd:string"&gt;http://cmstracker003/xml/fec.xml&lt;/XMLFileNameInput&gt;&#xD;
+        &lt;PIAReset xsi:type="xsd:boolean"&gt;true&lt;/PIAReset&gt;&#xD;
+        &lt;FECReset xsi:type="xsd:boolean"&gt;false&lt;/FECReset&gt;&#xD;
+        &lt;StrBusAdapter xsi:type="xsd:string"&gt;CAENPCI&lt;/StrBusAdapter&gt;&#xD;
+        &lt;SSID xsi:type="xsd:string"&gt;TRACKER&lt;/SSID&gt;&#xD;
+        &lt;PartitionName xsi:type="xsd:string"&gt;TEL2FEDLTC&lt;/PartitionName&gt;&#xD;
+        &lt;DCU_Thread_Used xsi:type="xsd:boolean"&gt;false&lt;/DCU_Thread_Used&gt;&#xD;
+        &lt;DCU_Thread_LoopTime xsi:type="xsd:unsignedLong"&gt;30&lt;/DCU_Thread_LoopTime&gt;&#xD;
+        &lt;Device_Thread_Used xsi:type="xsd:boolean"&gt;false&lt;/Device_Thread_Used&gt;&#xD;
+        &lt;Device_Thread_LoopTime xsi:type="xsd:unsignedLong"&gt;300&lt;/Device_Thread_LoopTime&gt;&#xD;
+        &lt;ShareMemoryName xsi:type="xsd:string"&gt;FECSM00&lt;/ShareMemoryName&gt;&#xD;
+        &lt;DcuWorkLoopName xsi:type="xsd:string"&gt;DCUWORKLOOP_TOB&lt;/DcuWorkLoopName&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;default&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/opt/trackerDAQ/config/clientApp.set&lt;/DiagSystemSettings&gt;&#xD;
+        &lt;DatabaseDownload xsi:type="xsd:boolean"&gt;false&lt;/DatabaseDownload&gt;&#xD;
+        &lt;ForceApplyRedundancy xsi:type="xsd:boolean"&gt;true&lt;/ForceApplyRedundancy&gt;&#xD;
+        &lt;AdapterSlot xsi:type="xsd:unsignedLong"&gt;1&lt;/AdapterSlot&gt;&#xD;
+        &lt;FECSlot xsi:type="xsd:unsignedLong"&gt;4&lt;/FECSlot&gt;&#xD;
+        &lt;DcuFilterInstance xsi:type="xsd:unsignedLong"&gt;0&lt;/DcuFilterInstance&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="DataBaseCache" id="52" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:DataBaseCache" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;FEDShareMemoryName xsi:type="xsd:string"&gt;FEDSM00&lt;/FEDShareMemoryName&gt;&#xD;
+        &lt;FECShareMemoryName xsi:type="xsd:string"&gt;FECSM00&lt;/FECShareMemoryName&gt;&#xD;
+        &lt;CONShareMemoryName xsi:type="xsd:string"&gt;CONSM00&lt;/CONShareMemoryName&gt;&#xD;
+        &lt;FEDShareMemorySize xsi:type="xsd:unsignedLong"&gt;245366784&lt;/FEDShareMemorySize&gt;&#xD;
+        &lt;FECShareMemorySize xsi:type="xsd:unsignedLong"&gt;33554432&lt;/FECShareMemorySize&gt;&#xD;
+        &lt;CONShareMemorySize xsi:type="xsd:unsignedLong"&gt;4194304&lt;/CONShareMemorySize&gt;&#xD;
+        &lt;DownloadFEC xsi:type="xsd:boolean"&gt;true&lt;/DownloadFEC&gt;&#xD;
+        &lt;DownloadCON xsi:type="xsd:boolean"&gt;true&lt;/DownloadCON&gt;&#xD;
+        &lt;commonMemory xsi:type="xsd:boolean"&gt;true&lt;/commonMemory&gt;&#xD;
+        &lt;DownloadFED xsi:type="xsd:boolean"&gt;false&lt;/DownloadFED&gt;&#xD;
+        &lt;ForwardFEDDescription xsi:type="xsd:boolean"&gt;false&lt;/ForwardFEDDescription&gt;&#xD;
+        &lt;Partition xsi:type="xsd:string"&gt;CR_27-FEB-2012_3&lt;/Partition&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libDcuFilter.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libDeviceDescriptions.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libxdaq2rc.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libFecSupervisor.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libDataBaseCache.so&lt;/xc:Module&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmstracker035.cern.ch:8081/rcms"&gt;&#xD;
+    &lt;xc:Application class="RCMSStateListener" id="50" instance="0" network="local" path="/services/replycommandreceiver" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41803"&gt;&#xD;
+    &lt;xc:Application class="TrackerManager" id="50" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31801" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41804"&gt;&#xD;
+    &lt;xc:Application class="GlobalErrorDispatcher" id="51" instance="0" network="local" service="GlobalErrorDispatcher" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+&lt;/xc:Partition&gt;</configFile>
+      </XdaqExecutive>
+    </FunctionManager>
+    <FunctionManager name="TriggerStateMachine" hostname="cmstracker035.cern.ch" port="8080" qualifiedResourceType="rcms.fm.resource.qualifiedresource.FunctionManager" role="TRACKER" sourceURL="http://cmstracker035.cern.ch:8080/statemachines/evbFSMtest.jar" className="rcms.fsm.tkfsm.StateMachine">
+      <XdaqApplication className="TrackerManager" hostname="cmsuptracker001.cern.ch" port="41803" urn="/urn:xdaq-application:lid=50" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/trackerDAQ/lib/libTrackerManager.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="InGlobalDaq" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="triggerControllerApplicationName" type="string">
+          <value>GenericTTCciSupervisor</value>
+        </property>
+        <property name="Fed9UFakeEvent" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="ExternalClock" type="unsignedLong">
+          <value>0</value>
+        </property>
+        <property name="Partition" type="string">
+          <value>MTCCxx</value>
+        </property>
+        <property name="ApvResetLatency" type="unsignedLong">
+          <value>35</value>
+        </property>
+        <property name="TriggerFedId" type="unsignedLong">
+          <value>1</value>
+        </property>
+        <property name="UsingFedSoap" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="UseDiagSystem" type="string">
+          <value>tuned</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/opt/trackerDAQ/config/clientApp.set</value>
+        </property>
+        <property name="RunType" type="unsignedLong">
+          <value>5</value>
+        </property>
+        <property name="NumberOfEventPerLoop" type="unsignedLong">
+          <value>20</value>
+        </property>
+        <property name="EventsPerPoint" type="unsignedLong">
+          <value>200</value>
+        </property>
+      </XdaqApplication>
+      <XdaqExecutive hostname="cmsuptracker001.cern.ch" port="41803" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="4" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xdaqtk" environmentString="PATH=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/bin:/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/trackerDAQ/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/gcc/4.6.2/lib64:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/external/slc6_amd64_gcc462/lib:/opt/cmsswLocal/lib: DIM_DNS_NODE=cmstracker037 ENV_CMS_TK_FEC_ROOT=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ  HOME=/home/xdaqtk CONFDB=cms_tracker_tif3/fjrElal97@cms_sstracker ORACLE_HOME=/opt/deps/slc4_ia32_gcc345/external/oracle/10.2.0.2 TNS_ADMIN=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/oracle-env/29/etc ENV_CMS_TK_ORACLE_HOME=${ORACLE_HOME} ENV_CMS_TK_PARTITION=CR_27-FEB-2012_3 ENV_CMS_TK_CAEN_ROOT=/usr/local ENV_CMS_TK_HARDWARE_ROOT=/opt/trackerDAQ ENV_CMS_TK_APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_SBS_ROOT=/opt/trackerDAQ ENV_CMS_TK_HAL_ROOT=/opt/xdaq APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_DIAG_ROOT=/opt/trackerDAQ HOSTNAME=cmstracker007.cern.ch SCRATCH=/opt/cmssw/Data XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr ENV_TRACKER_DAQ=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ SEAL_PLUGINS=/opt/cmsswLocal/module CMSSW_BASE=/opt/cmsswLocal CMSSW_VERSION=CMSSW_3_2_5 POOL_OUTMSG_LEVEL=4 POOL_STORAGESVC_DB_AGE_LIMIT=10 SEAL=/exports/slc5/CMSSW/Base/slc5_amd64_gcc434/cms/seal/SEAL_1_9_4-cms22 SEAL_KEEP_MODULES=true CMSSW_SEARCH_PATH=/opt/cmsswLocal/src/ PYTHONPATHX=/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/python:/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/python:/exports/slc6ptu/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python-ldap/2.3.5-cms3/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyqt/4.8.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-scipy/0.8.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-matplotlib/1.0.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/sip/4.11.2-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-pycurl/7.19.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-numpy/1.6.1-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-lint/0.25.1-cms2/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-ipython/0.10-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cx-oracle/5.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cjson/1.0.5-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/das-client/1.4.1-cms3/bin:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/elementtree/1.2.6-cms4/share/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/rivet/1.5.1-cms8/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyminuit2/0.0.1-cms14/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/professor/1.0.0-cms15/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/lcg/root/5.34.01-cms4/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib/DBSAPI PYTHONPATH=/opt/cmsswLocal/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/lib/python2.7/">
+        <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
+  &lt;i2o:protocol xmlns:i2o="http://xdaq.web.cern.ch/xdaq/xsd/2004/I2OConfiguration-30"&gt;&#xD;
+    &lt;i2o:target class="AjaxLogReader" instance="0" tid="104" /&gt;&#xD;
+    &lt;i2o:target class="DS" instance="0" tid="111" /&gt;&#xD;
+    &lt;i2o:target class="DataBaseCache" instance="0" tid="108" /&gt;&#xD;
+    &lt;i2o:target class="DataBaseCache" instance="1" tid="109" /&gt;&#xD;
+    &lt;i2o:target class="DcuFilter" instance="0" tid="106" /&gt;&#xD;
+    &lt;i2o:target class="FecSupervisor" instance="0" tid="107" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="0" tid="114" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="1" tid="113" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="2" tid="112" /&gt;&#xD;
+    &lt;i2o:target class="Fed9USupervisor" instance="3" tid="115" /&gt;&#xD;
+    &lt;i2o:target class="GenericTTCciSupervisor" instance="0" tid="101" /&gt;&#xD;
+    &lt;i2o:target class="TrackerManager" instance="0" tid="105" /&gt;&#xD;
+    &lt;i2o:target class="evb::EVM" instance="0" tid="117" /&gt;&#xD;
+  &lt;/i2o:protocol&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41803"&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31801" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+    &lt;xc:Application class="TrackerManager" id="50" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:TrackerManager" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;InGlobalDaq xsi:type="xsd:boolean"&gt;false&lt;/InGlobalDaq&gt;&#xD;
+        &lt;triggerControllerApplicationName xsi:type="xsd:string"&gt;GenericTTCciSupervisor&lt;/triggerControllerApplicationName&gt;&#xD;
+        &lt;Fed9UFakeEvent xsi:type="xsd:boolean"&gt;false&lt;/Fed9UFakeEvent&gt;&#xD;
+        &lt;ExternalClock xsi:type="xsd:unsignedLong"&gt;0&lt;/ExternalClock&gt;&#xD;
+        &lt;Partition xsi:type="xsd:string"&gt;MTCCxx&lt;/Partition&gt;&#xD;
+        &lt;ApvResetLatency xsi:type="xsd:unsignedLong"&gt;35&lt;/ApvResetLatency&gt;&#xD;
+        &lt;TriggerFedId xsi:type="xsd:unsignedLong"&gt;1&lt;/TriggerFedId&gt;&#xD;
+        &lt;UsingFedSoap xsi:type="xsd:boolean"&gt;true&lt;/UsingFedSoap&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;tuned&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/opt/trackerDAQ/config/clientApp.set&lt;/DiagSystemSettings&gt;&#xD;
+        &lt;RunType xsi:type="xsd:unsignedLong"&gt;5&lt;/RunType&gt;&#xD;
+        &lt;NumberOfEventPerLoop xsi:type="xsd:unsignedLong"&gt;20&lt;/NumberOfEventPerLoop&gt;&#xD;
+        &lt;EventsPerPoint xsi:type="xsd:unsignedLong"&gt;200&lt;/EventsPerPoint&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="DataBaseCache" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="evb::EVM" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="Fed9USupervisor" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="DcuFilter" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="FecSupervisor" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="DS" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="GenericTTCciSupervisor" network="crackatcp" /&gt;&#xD;
+      &lt;xc:Unicast class="AjaxLogReader" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libTrackerManager.so&lt;/xc:Module&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmstracker037.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Application class="GenericTTCciSupervisor" id="51" instance="0" network="local" publish="true" service="ttc-ttcci" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmstracker037.cern.ch" network="crackatcp" port="31800" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmstracker038.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Application class="evb::EVM" id="51" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmstracker038.cern.ch" network="crackatcp" port="31800" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Application class="FecSupervisor" id="51" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Application class="DataBaseCache" id="52" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Application class="DcuFilter" id="50" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31802" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41801"&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="55" instance="3" network="local" /&gt;&#xD;
+    &lt;xc:Application class="DS" id="51" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="52" instance="2" network="local" /&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="53" instance="1" network="local" /&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="54" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31804" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41802"&gt;&#xD;
+    &lt;xc:Application class="DataBaseCache" id="50" instance="1" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31803" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41804"&gt;&#xD;
+    &lt;xc:Application class="GlobalErrorDispatcher" id="51" instance="0" network="local" service="GlobalErrorDispatcher" /&gt;&#xD;
+    &lt;xc:Application class="AjaxLogReader" id="52" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31800" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+&lt;/xc:Partition&gt;</configFile>
+      </XdaqExecutive>
+      <Service name="JobControl" hostname="cmsuptracker001.cern.ch" port="9999" urn="/urn:xdaq-application:lid=10" qualifiedResourceType="rcms.fm.resource.qualifiedresource.JobControl" />
+      <XdaqApplication className="AjaxLogReader" hostname="cmsuptracker001.cern.ch" port="41804" urn="/urn:xdaq-application:lid=52" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/trackerDAQ/lib/libAjaxLogReader.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="UseDiagSystem" type="string">
+          <value>default</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/opt/trackerDAQ/config/ajaxLr.set</value>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="GlobalErrorDispatcher" hostname="cmsuptracker001.cern.ch" port="41804" urn="/urn:xdaq-application:lid=51" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/trackerDAQ/lib/libGlobalErrorDispatcher.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="UseDiagSystem" type="string">
+          <value>default</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/opt/trackerDAQ/config/glbEd.set</value>
+        </property>
+        <property name="LogFilePath" type="string">
+          <value>/tmp/</value>
+        </property>
+        <attribute name="service">
+          <value>GlobalErrorDispatcher</value>
+        </attribute>
+      </XdaqApplication>
+      <XdaqApplication className="ErrorDbUploader" hostname="cmsuptracker001.cern.ch" port="41804" urn="/urn:xdaq-application:lid=50" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/trackerDAQ/lib/libErrorDbUploader.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="UseDiagSystem" type="string">
+          <value>default</value>
+        </property>
+        <property name="DiagSystemSettings" type="string">
+          <value>/opt/trackerDAQ/config/errDbUploader.set</value>
+        </property>
+      </XdaqApplication>
+      <XdaqExecutive hostname="cmsuptracker001.cern.ch" port="41804" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="5" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xdaqtk" environmentString="PATH=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/bin:/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/trackerDAQ/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/gcc/4.6.2/lib64:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/external/slc6_amd64_gcc462/lib:/opt/cmsswLocal/lib: DIM_DNS_NODE=cmstracker037 ENV_CMS_TK_FEC_ROOT=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ  HOME=/home/xdaqtk CONFDB=cms_tracker_tif3/fjrElal97@cms_sstracker ORACLE_HOME=/opt/deps/slc4_ia32_gcc345/external/oracle/10.2.0.2 TNS_ADMIN=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/oracle-env/29/etc ENV_CMS_TK_ORACLE_HOME=${ORACLE_HOME} ENV_CMS_TK_PARTITION=CR_27-FEB-2012_3 ENV_CMS_TK_CAEN_ROOT=/usr/local ENV_CMS_TK_HARDWARE_ROOT=/opt/trackerDAQ ENV_CMS_TK_APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_SBS_ROOT=/opt/trackerDAQ ENV_CMS_TK_HAL_ROOT=/opt/xdaq APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_DIAG_ROOT=/opt/trackerDAQ HOSTNAME=cmstracker007.cern.ch SCRATCH=/opt/cmssw/Data XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr ENV_TRACKER_DAQ=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ SEAL_PLUGINS=/opt/cmsswLocal/module CMSSW_BASE=/opt/cmsswLocal CMSSW_VERSION=CMSSW_3_2_5 POOL_OUTMSG_LEVEL=4 POOL_STORAGESVC_DB_AGE_LIMIT=10 SEAL=/exports/slc5/CMSSW/Base/slc5_amd64_gcc434/cms/seal/SEAL_1_9_4-cms22 SEAL_KEEP_MODULES=true CMSSW_SEARCH_PATH=/opt/cmsswLocal/src/ PYTHONPATHX=/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/python:/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/python:/exports/slc6ptu/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python-ldap/2.3.5-cms3/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyqt/4.8.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-scipy/0.8.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-matplotlib/1.0.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/sip/4.11.2-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-pycurl/7.19.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-numpy/1.6.1-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-lint/0.25.1-cms2/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-ipython/0.10-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cx-oracle/5.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cjson/1.0.5-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/das-client/1.4.1-cms3/bin:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/elementtree/1.2.6-cms4/share/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/rivet/1.5.1-cms8/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyminuit2/0.0.1-cms14/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/professor/1.0.0-cms15/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/lcg/root/5.34.01-cms4/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib/DBSAPI PYTHONPATH=/opt/cmsswLocal/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/lib/python2.7/">
+        <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
+  &lt;i2o:protocol xmlns:i2o="http://xdaq.web.cern.ch/xdaq/xsd/2004/I2OConfiguration-30"&gt;&#xD;
+    &lt;i2o:target class="AjaxLogReader" instance="0" tid="104" /&gt;&#xD;
+    &lt;i2o:target class="ErrorDbUploader" instance="0" tid="102" /&gt;&#xD;
+    &lt;i2o:target class="GlobalErrorDispatcher" instance="0" tid="103" /&gt;&#xD;
+    &lt;i2o:target class="TrackerManager" instance="0" tid="105" /&gt;&#xD;
+  &lt;/i2o:protocol&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41804"&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31800" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+    &lt;xc:Application class="ErrorDbUploader" id="50" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:ErrorDbUploader" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;default&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/opt/trackerDAQ/config/errDbUploader.set&lt;/DiagSystemSettings&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="GlobalErrorDispatcher" id="51" instance="0" network="local" service="GlobalErrorDispatcher"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:GlobalErrorDispatcher" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;default&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/opt/trackerDAQ/config/glbEd.set&lt;/DiagSystemSettings&gt;&#xD;
+        &lt;LogFilePath xsi:type="xsd:string"&gt;/tmp/&lt;/LogFilePath&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="AjaxLogReader" id="52" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:AjaxLogReader" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;UseDiagSystem xsi:type="xsd:string"&gt;default&lt;/UseDiagSystem&gt;&#xD;
+        &lt;DiagSystemSettings xsi:type="xsd:string"&gt;/opt/trackerDAQ/config/ajaxLr.set&lt;/DiagSystemSettings&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libErrorDbUploader.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libGlobalErrorDispatcher.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libAjaxLogReader.so&lt;/xc:Module&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Application class="FecSupervisor" id="51" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Application class="DataBaseCache" id="52" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Application class="DcuFilter" id="50" instance="0" network="local" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41801"&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="55" instance="3" network="local" /&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="52" instance="2" network="local" /&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="53" instance="1" network="local" /&gt;&#xD;
+    &lt;xc:Application class="DS" id="51" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Application class="Fed9USupervisor" id="54" instance="0" network="local" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41802"&gt;&#xD;
+    &lt;xc:Application class="DataBaseCache" id="50" instance="1" network="local" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41803"&gt;&#xD;
+    &lt;xc:Application class="TrackerManager" id="50" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31801" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+&lt;/xc:Partition&gt;</configFile>
+      </XdaqExecutive>
+      <Service name="JobControl" hostname="cmstracker037.cern.ch" port="9999" urn="/urn:xdaq-application:lid=10" qualifiedResourceType="rcms.fm.resource.qualifiedresource.JobControl" />
+      <XdaqApplication className="GenericTTCciSupervisor" hostname="cmstracker037.cern.ch" port="41800" urn="/urn:xdaq-application:lid=51" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/trackerDAQ/lib/libGenericTTCciSupervisor.so /opt/xdaq/lib/libttcutils.so /opt/xdaq/lib/libttcmonitoring.so /opt/xdaq/lib/libttcttcci.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="name" type="string">
+          <value>TTCci</value>
+        </property>
+        <property name="BusAdapter" type="string">
+          <value>CAENPCI</value>
+        </property>
+        <property name="Is64XCompatible" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="Configuration" type="string">
+          <value>[file=/opt/trackerDAQ/config/TTCciWithTTCClock.txt]</value>
+        </property>
+        <property name="BTimeCorrection" type="unsignedInt">
+          <value>97</value>
+        </property>
+        <property name="DelayT2Correction" type="unsignedInt">
+          <value>2</value>
+        </property>
+        <property name="Location" type="integer">
+          <value>18</value>
+        </property>
+        <attribute name="publish">
+          <value>true</value>
+        </attribute>
+        <attribute name="service">
+          <value>ttc-ttcci</value>
+        </attribute>
+      </XdaqApplication>
+      <XdaqApplication className="pt::atcp::PeerTransportATCP" hostname="cmstracker037.cern.ch" port="41800" urn="/urn:xdaq-application:lid=50" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/opt/xdaq/lib/libptatcp.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="autoSize" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="maxPacketSize" type="unsignedInt">
+          <value>256000</value>
+        </property>
+      </XdaqApplication>
+      <XdaqExecutive hostname="cmstracker037.cern.ch" port="41800" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="6" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xdaqtk" environmentString="PATH=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/bin:/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/trackerDAQ/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/gcc/4.6.2/lib64:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/external/slc6_amd64_gcc462/lib:/opt/cmsswLocal/lib: DIM_DNS_NODE=cmstracker037 ENV_CMS_TK_FEC_ROOT=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ  HOME=/home/xdaqtk CONFDB=cms_tracker_tif3/fjrElal97@cms_sstracker ORACLE_HOME=/opt/deps/slc4_ia32_gcc345/external/oracle/10.2.0.2 TNS_ADMIN=/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/oracle-env/29/etc ENV_CMS_TK_ORACLE_HOME=${ORACLE_HOME} ENV_CMS_TK_PARTITION=CR_27-FEB-2012_3 ENV_CMS_TK_CAEN_ROOT=/usr/local ENV_CMS_TK_HARDWARE_ROOT=/opt/trackerDAQ ENV_CMS_TK_APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_SBS_ROOT=/opt/trackerDAQ ENV_CMS_TK_HAL_ROOT=/opt/xdaq APVE_ROOT=/opt/trackerDAQ ENV_CMS_TK_DIAG_ROOT=/opt/trackerDAQ HOSTNAME=cmstracker007.cern.ch SCRATCH=/opt/cmssw/Data XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr ENV_TRACKER_DAQ=/opt/trackerDAQ ENV_CMS_TK_FED9U_ROOT=/opt/trackerDAQ SEAL_PLUGINS=/opt/cmsswLocal/module CMSSW_BASE=/opt/cmsswLocal CMSSW_VERSION=CMSSW_3_2_5 POOL_OUTMSG_LEVEL=4 POOL_STORAGESVC_DB_AGE_LIMIT=10 SEAL=/exports/slc5/CMSSW/Base/slc5_amd64_gcc434/cms/seal/SEAL_1_9_4-cms22 SEAL_KEEP_MODULES=true CMSSW_SEARCH_PATH=/opt/cmsswLocal/src/ PYTHONPATHX=/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/python:/exports/slc6/CMSSW/Development/Users/Derek/May21/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/python:/exports/slc6ptu/CMSSW/Base/slc6_amd64_gcc462/cms/cmssw/CMSSW_6_1_0_pre1/lib/slc6_amd64_gcc462:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/coral/CORAL_2_3_21-cms16/slc6_amd64_gcc462/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python-ldap/2.3.5-cms3/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyqt/4.8.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-scipy/0.8.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-matplotlib/1.0.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/sip/4.11.2-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-pycurl/7.19.0-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-numpy/1.6.1-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-lint/0.25.1-cms2/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-ipython/0.10-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cx-oracle/5.1-cms5/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/py2-cjson/1.0.5-cms4/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/das-client/1.4.1-cms3/bin:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/elementtree/1.2.6-cms4/share/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/rivet/1.5.1-cms8/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/pyminuit2/0.0.1-cms14/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/professor/1.0.0-cms15/lib/python2.7/site-packages:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/lcg/root/5.34.01-cms4/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/cms/dbs-client/DBS_2_1_9/lib/DBSAPI PYTHONPATH=/opt/cmsswLocal/python:/exports/slc6/CMSSW/Base/slc6_amd64_gcc462/external/python/2.7.3-cms/lib/python2.7/">
+        <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
+  &lt;i2o:protocol xmlns:i2o="http://xdaq.web.cern.ch/xdaq/xsd/2004/I2OConfiguration-30"&gt;&#xD;
+    &lt;i2o:target class="GenericTTCciSupervisor" instance="0" tid="101" /&gt;&#xD;
+    &lt;i2o:target class="TrackerManager" instance="0" tid="105" /&gt;&#xD;
+    &lt;i2o:target class="pt::atcp::PeerTransportATCP" instance="0" tid="100" /&gt;&#xD;
+  &lt;/i2o:protocol&gt;&#xD;
+  &lt;xc:Context url="http://cmstracker037.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmstracker037.cern.ch" network="crackatcp" port="31800" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+    &lt;xc:Application class="pt::atcp::PeerTransportATCP" id="50" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:pt::atcp::PeerTransportATCP" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;autoSize xsi:type="xsd:boolean"&gt;false&lt;/autoSize&gt;&#xD;
+        &lt;maxPacketSize xsi:type="xsd:unsignedInt"&gt;256000&lt;/maxPacketSize&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="GenericTTCciSupervisor" id="51" instance="0" network="local" publish="true" service="ttc-ttcci"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:GenericTTCciSupervisor" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;name xsi:type="xsd:string"&gt;TTCci&lt;/name&gt;&#xD;
+        &lt;BusAdapter xsi:type="xsd:string"&gt;CAENPCI&lt;/BusAdapter&gt;&#xD;
+        &lt;Is64XCompatible xsi:type="xsd:boolean"&gt;false&lt;/Is64XCompatible&gt;&#xD;
+        &lt;Configuration xsi:type="xsd:string"&gt;[file=/opt/trackerDAQ/config/TTCciWithTTCClock.txt]&lt;/Configuration&gt;&#xD;
+        &lt;BTimeCorrection xsi:type="xsd:unsignedInt"&gt;97&lt;/BTimeCorrection&gt;&#xD;
+        &lt;DelayT2Correction xsi:type="xsd:unsignedInt"&gt;2&lt;/DelayT2Correction&gt;&#xD;
+        &lt;Location xsi:type="xsd:integer"&gt;18&lt;/Location&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libptatcp.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/trackerDAQ/lib/libGenericTTCciSupervisor.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libttcutils.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libttcmonitoring.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libttcttcci.so&lt;/xc:Module&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptracker001.cern.ch:41803"&gt;&#xD;
+    &lt;xc:Application class="TrackerManager" id="50" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptracker001.cern.ch" network="crackatcp" port="31801" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+&lt;/xc:Partition&gt;</configFile>
+      </XdaqExecutive>
+    </FunctionManager>
+  </FunctionManager>
+</Configuration>
+
