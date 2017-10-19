@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" user="xtaldaq" path="XDAQ_Config">
+  <property name="HWCFG_KEY" type="string" />
+  <!--the top-level FM-->
+  <FunctionManager name="levelOneTrackerFMnewEvb" hostname="cmsuptrackerdaq.cern.ch" port="8080" qualifiedResourceType="rcms.fm.resource.qualifiedresource.FunctionManager" role="TRACKER" sourceURL="http://cmsuptrackerdaq.cern.ch:8080/functionmanagers/levelOneTrackerFMnewEvb.jar" className="rcms.fm.app.level1tracker.MyFunctionManager">
+      <!--the rubuilder FM that controls EVM, BU and PT-BLIT-->
+    <FunctionManager name="RUBuilderFMevb" hostname="cmsuptrackerdaq.cern.ch" port="8080" qualifiedResourceType="rcms.fm.resource.qualifiedresource.FunctionManager" role="TRACKER" sourceURL="http://cmsuptrackerdaq.cern.ch:8080/functionmanagers/rubuilderFM.jar" className="rcms.fm.app.rubuilder.RUBuilderFM">
+        <!--the job control-->
+      <Service name="JobControl" hostname="cmsuptrackerdaq.cern.ch" port="9999" urn="/urn:xdaq-application:lid=10" qualifiedResourceType="rcms.fm.resource.qualifiedresource.JobControl" />
+      <!--the xdaq applications-->
+      <XdaqApplication className="evb::BU" hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=52" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so lib/libtcpla.so lib/libptblit.so lib/libevb.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="ignoreResourceSummary" type="boolean">
+          <value>true</value>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="evb::EVM" hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=51" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so lib/libtcpla.so lib/libptblit.so lib/libevb.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="inputSource" type="string">
+          <value>Socket</value>
+        </property>
+        <property name="fakeLumiSectionDuration" type="unsignedInt">
+          <value>20</value>
+        </property>
+        <property name="fedSourceIds" type="array">
+          <property name="Ids" type="unsignedInt">
+            <value>51</value>
+          </property>
+        </property>
+        <property name="ferolSources" type="array">
+          <property name="struct" type="structure">
+            <property name="fedId" type="unsignedInt">
+              <value>51</value>
+            </property>
+            <property name="hostname" type="string">
+              <value>cmsuptrackerdaq.cern.ch</value>
+            </property>
+            <property name="port" type="unsignedInt">
+              <value>44500</value>
+            </property>
+          </property>
+        </property>
+      </XdaqApplication>
+      <XdaqApplication className="pt::blit::Application" hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=50" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libtcpla.so lib/libptblit.so" xdaqPath="/opt/xdaq" instance="1">
+        <property name="maxClients" type="unsignedInt">
+          <value>32</value>
+        </property>
+        <property name="maxReceiveBuffers" type="unsignedInt">
+          <value>128</value>
+        </property>
+        <property name="maxBlockSize" type="unsignedInt">
+          <value>131072</value>
+        </property>
+      </XdaqApplication>
+      <!--the executive  -->
+      <XdaqExecutive hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="3" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xtaldaq" environmentString="PATH=/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/cactus/lib:/usr/lib:/home/xtaldaq/Ph2_ACF/lib:/home/xtaldaq/DTCSupervisor/lib:/usr/lib64/root DIM_DNS_NODE=cmsuptrackerdaq HOME=/home/xtaldaq HOSTNAME=cmsuptrackerdaq.cern.ch XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr">
+          <!--the config file for the above XDAQ applications part of this executive-->
+        <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
+  &lt;i2o:protocol xmlns:i2o="http://xdaq.web.cern.ch/xdaq/xsd/2004/I2OConfiguration-30"&gt;&#xD;
+    &lt;i2o:target class="evb::BU" instance="0" tid="118" /&gt;&#xD;
+    &lt;i2o:target class="evb::EVM" instance="0" tid="117" /&gt;&#xD;
+    &lt;i2o:target class="pt::blit::Application" instance="1" tid="116" /&gt;&#xD;
+  &lt;/i2o:protocol&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptrackerdaq.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptrackerdaq.cern.ch" network="playbackatcp" port="31800" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptrackerdaq.cern.ch" network="playbackbtcp" port="39800" protocol="btcp" service="blit" maxbulksize="131072" rcvTimeout="2000" rmode="select" singleThread="true" sndTimeout="2000" /&gt;&#xD;
+    &lt;xc:Application class="pt::blit::Application" id="50" instance="1" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:pt::blit::Application" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;maxClients xsi:type="xsd:unsignedInt"&gt;32&lt;/maxClients&gt;&#xD;
+        &lt;maxReceiveBuffers xsi:type="xsd:unsignedInt"&gt;128&lt;/maxReceiveBuffers&gt;&#xD;
+        &lt;maxBlockSize xsi:type="xsd:unsignedInt"&gt;131072&lt;/maxBlockSize&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="evb::EVM" id="51" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:evb::EVM" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;inputSource xsi:type="xsd:string"&gt;Socket&lt;/inputSource&gt;&#xD;
+        &lt;fakeLumiSectionDuration xsi:type="xsd:unsignedInt"&gt;20&lt;/fakeLumiSectionDuration&gt;&#xD;
+        &lt;fedSourceIds soapenc:arrayType="xsd:ur-type[4]" xsi:type="soapenc:Array"&gt;&#xD;
+          &lt;item soapenc:position="[0]" xsi:type="xsd:unsignedInt"&gt;51&lt;/item&gt;&#xD;
+        &lt;/fedSourceIds&gt;&#xD;
+        &lt;ferolSources soapenc:arrayType="xsd:ur-type[4]" xsi:type="soapenc:Array"&gt;&#xD;
+          &lt;item soapenc:position="[0]" xsi:type="soapenc:Struct"&gt;&#xD;
+            &lt;fedId xsi:type="xsd:unsignedInt"&gt;51&lt;/fedId&gt;&#xD;
+            &lt;hostname xsi:type="xsd:string"&gt;cmsuptrackerdaq.cern.ch&lt;/hostname&gt;&#xD;
+            &lt;port xsi:type="xsd:unsignedInt"&gt;44500&lt;/port&gt;&#xD;
+          &lt;/item&gt;&#xD;
+        &lt;/ferolSources&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      <!--what is this?-->
+      <!--&lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;-->
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="evb::BU" id="52" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:evb::BU" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;ignoreResourceSummary xsi:type="xsd:boolean"&gt;true&lt;/ignoreResourceSummary&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libtcpla.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libptblit.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libxdaq2rc.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libevb.so&lt;/xc:Module&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+    <!--done configuring the EVM/BU-->
+  &lt;xc:Context url="http://cmsuptrackerdaq.cern.ch:8081/rcms"&gt;&#xD;
+    &lt;xc:Application class="RCMSStateListener" id="50" instance="0" network="local" path="/services/replycommandreceiver" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;/xc:Partition&gt;
+  </configFile>
+      </XdaqExecutive>
+
+      <!--end of executive for EVM-BU-PT-BLIT-->
+      <XdaqApplication className="pt::blit::Application" hostname="cmsuptrackerdaq.cern.ch" port="41801" urn="/urn:xdaq-application:lid=50" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libtcpla.so lib/libptblit.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="maxClients" type="unsignedInt">
+          <value>32</value>
+        </property>
+        <property name="maxReceiveBuffers" type="unsignedInt">
+          <value>128</value>
+        </property>
+        <property name="maxBlockSize" type="unsignedInt">
+          <value>131072</value>
+        </property>
+      </XdaqApplication>
+
+    </FunctionManager>
+
+      <!--the following would be the function manager, executive and the applications on the DAQ machine-->
+    <FunctionManager name="FedStateMachine" hostname="cmsuptrackerdaq.cern.ch" port="8080" qualifiedResourceType="rcms.fm.resource.qualifiedresource.FunctionManager" role="TRACKER" sourceURL="http://cmsuptrackerdaq.cern.ch:8080/statemachines/evbFSMtest.jar" className="rcms.fsm.tkfsm.StateMachine">
+
+  <XdaqApplication className="Ph2TkDAQ::DTCSupervisor" hostname="cmsuptrackerdaq.cern.ch" port="41801" urn="/urn:xdaq-application:lid=51" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="/home/xtaldaq/DTCSupervisor/lib/libDTCSupervisor.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="HWDescriptionFile" type="string">
+            <value>/home/xtaldaq/DTCSupervisor/xml/test.xml</value>
+        </property>
+        <property name="DataDirectory" type="string">
+          <value>/home/xtaldaq/DTCSupervisor/Data/</value>
+        </property>
+        <property name="ResultDirectory" type="string">
+          <value>/home/xtaldaq/DTCSupervisor/Results/</value>
+        </property>
+        <property name="RunNumber" type="integer">
+          <value>-1</value>
+        </property>
+        <property name="NEvents" type="unsignedInt">
+          <value>1000</value>
+        </property>
+        <property name="WriteRAW" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="WriteDAQ" type="boolean">
+          <value>false</value>
+        </property>
+        <property name="ShortPause" type="integer">
+          <value>10</value>
+        </property>
+        <property name="THttpServerPort" type="integer">
+          <value>9090</value>
+        </property>
+        <property name="SendData" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="DataSourceHost" type="string">
+          <value>cmsuptrackerdaq.cern.ch</value>
+        </property>
+        <property name="DataSourcePort" type="integer">
+          <value>44444</value>
+        </property>
+        <property name="DataSinkHost" type="string">
+          <value>cmsuptrackerdaq.cern.ch</value>
+        </property>
+        <property name="DataSinkPort" type="integer">
+          <value>39800</value>
+        </property>
+        <property name="PlaybackMode" type="boolean">
+          <value>true</value>
+        </property>
+        <property name="PlaybackFile" type="string">
+          <value>/home/xtaldaq/DTCSupervisor/Data/</value>
+        </property>
+      </XdaqApplication>
+
+      <XdaqExecutive hostname="cmsuptrackerdaq.cern.ch" port="41801" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="1" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xtaldaq" environmentString="PATH=/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/cactus/lib:/usr/lib:/home/xtaldaq/Ph2_ACF/lib:/home/xtaldaq/DTCSupervisor/lib:/usr/lib64/root DIM_DNS_NODE=cmstracker037 HOME=/home/xtaldaq  HOSTNAME=cmsuptrackerdaq.cern.ch XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr">
+
+        <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
+  &lt;i2o:protocol xmlns:i2o="http://xdaq.web.cern.ch/xdaq/xsd/2004/I2OConfiguration-30"&gt;&#xD;
+    &lt;i2o:target class="evb::EVM" instance="0" tid="117" /&gt;&#xD;
+    &lt;i2o:target class="pt::blit::Application" instance="0" tid="110" /&gt;&#xD;
+  &lt;/i2o:protocol&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptrackerdaq.cern.ch:41801"&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptrackerdaq.cern.ch" network="playbackatcp" port="31804" protocol="atcp" service="i2o" smode="select" rmode="select" nonblock="true" sndTimeout="2000" rcvTimeout="2000" connectOnRequest="true" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptrackerdaq.cern.ch" network="playbackbtcp" port="39800" protocol="btcp" service="blit" maxbulksize="131072" rcvTimeout="2000" rmode="select" singleThread="true" sndTimeout="2000" /&gt;&#xD;
+    &lt;xc:Application class="pt::blit::Application" id="50" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:pt::blit::Application" xsi:type="soapenc:Struct"&gt;&#xD;
+        &lt;maxClients xsi:type="xsd:unsignedInt"&gt;32&lt;/maxClients&gt;&#xD;
+        &lt;maxReceiveBuffers xsi:type="xsd:unsignedInt"&gt;128&lt;/maxReceiveBuffers&gt;&#xD;
+        &lt;maxBlockSize xsi:type="xsd:unsignedInt"&gt;131072&lt;/maxBlockSize&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Application class="Ph2TkDAQ::DTCSupervisor" id="51" instance="0" network="local"&gt;&#xD;
+      &lt;properties xmlns="urn:xdaq-application:DTCSupervisor" xsi:type="soapenc:Struct"&gt;&#xD;
+      &lt;HWDescriptionFile xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/xml/test.xml&lt;/HWDescriptionFile&gt;&#xD;
+      &lt;DataDirectory xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Data/&lt;/DataDirectory&gt;&#xD;
+      &lt;ResultDirectory xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Results/&lt;/ResultDirectory&gt;&#xD;
+      &lt;RunNumber xsi:type="xsd:integer"&gt;-1&lt;/RunNumber&gt;&#xD;
+      &lt;NEvents xsi:type="xsd:unsignedInt"&gt;1000&lt;/NEvents&gt;&#xD;
+      &lt;WriteRAW xsi:type="xsd:boolean"&gt;false&lt;/WriteRAW&gt;&#xD;
+      &lt;WriteDAQ xsi:type="xsd:boolean"&gt;false&lt;/WriteDAQ&gt;&#xD;
+      &lt;ShortPause xsi:type="xsd:integer"&gt;10&lt;/ShortPause&gt;&#xD;
+      &lt;THttpServerPort xsi:type="xsd:integer"&gt;9090&lt;/THttpServerPort&gt;&#xD;
+      &lt;SendData xsi:type="xsd:boolean"&gt;true&lt;/SendData&gt;&#xD;
+      &lt;DataSourceHost xsi:type="xsd:string"&gt;cmsuptrackerdaq.cern.ch&lt;/DataSourceHost&gt;&#xD;
+      &lt;DataSourcePort xsi:type="xsd:integer"&gt;44444&lt;/DataSourcePort&gt;&#xD;
+      &lt;DataSinkHost xsi:type="xsd:string"&gt;cmsuptrackerdaq.cern.ch&lt;/DataSinkHost&gt;&#xD;
+      &lt;DataSinkPort xsi:type="xsd:integer"&gt;39800&lt;/DataSinkPort&gt;&#xD;
+      &lt;PlaybackMode xsi:type="xsd:boolean"&gt;true&lt;/PlaybackMode&gt;&#xD;
+      &lt;PlaybackFile xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Data/&lt;/PlaybackFile&gt;&#xD;
+      &lt;/properties&gt;&#xD;
+      &lt;xc:Unicast class="evb::EVM" network="playbackbtcp" /&gt;&#xD;
+      <!--&lt;xc:Unicast class="TrackerManager" network="crackatcp" /&gt;&#xD;-->
+    &lt;/xc:Application&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libtcpla.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libptblit.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/opt/xdaq/lib/libxdaq2rc.so&lt;/xc:Module&gt;&#xD;
+    &lt;xc:Module&gt;/home/xtaldaq/DTCSupervisor/lib/libDTCSupervisor.so&lt;/xc:Module&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptrackerdaq.cern.ch:8081/rcms"&gt;&#xD;
+    &lt;xc:Application class="RCMSStateListener" id="50" instance="0" network="local" path="/services/replycommandreceiver" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;xc:Context url="http://cmsuptrackerdaq.cern.ch:41800"&gt;&#xD;
+    &lt;xc:Application class="evb::EVM" id="51" instance="0" network="local" /&gt;&#xD;
+    &lt;xc:Endpoint hostname="cmsuptrackerdaq.cern.ch" network="playbackbtcp" port="39800" protocol="btcp" service="blit" maxbulksize="131072" rcvTimeout="2000" rmode="select" singleThread="true" sndTimeout="2000" /&gt;&#xD;
+  &lt;/xc:Context&gt;&#xD;
+  &lt;/xc:Partition&gt;
+  </configFile>
+
+      </XdaqExecutive>
+      <!--end of executive for Supervisor-->
+    </FunctionManager>
+    <!--end of FedStateMachine FM-->
+  </FunctionManager>
+  <!--end of top-level FM-->
+</Configuration>
+
