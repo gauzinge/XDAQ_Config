@@ -11,4 +11,4 @@ export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$CATALINA_HOME:$PATH
 #############################################################################
 alias  StartTomcat="$CATALINA_HOME/bin/startup.sh"
 alias  StopTomcat="$CATALINA_HOME/bin/shutdown.sh"
-#alias  RunManager="java -Duser.home=/home/xtaldaq/RCMS -jar /home/xtaldaq/RCMS/manager.jar"
+alias  RunManager="java -jar ~/XDAQ_Config/manager.jar"
