@@ -50,7 +50,7 @@
       </XdaqApplication>
       
 
-      <XdaqExecutive hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="0" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xtaldaq" environmentString="PATH=/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/cactus/lib:/usr/lib:/home/xtaldaq/Ph2_ACF/lib:/home/xtaldaq/DTCSupervisor/lib:/usr/lib64/root DIM_DNS_NODE=cmsuptrackerdaq HOME=/home/xtaldaq HOSTNAME=cmsuptrackerdaq.cern.ch XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr DTCSUPERVISOR_ROOT=/home/xtaldaq/DTCSupervisor PH2ACF_ROOT=/home/xtaldaq/Ph2_ACF" customLogFilePath="">
+      <XdaqExecutive hostname="cmsuptrackerdaq.cern.ch" port="41800" urn="/urn:xdaq-application:lid=0" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="0" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xtaldaq" environmentString="PATH=/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/cactus/lib:/usr/lib:/home/xtaldaq/Ph2_ACF/lib:/home/xtaldaq/DTCSupervisor/lib:/usr/lib64/root DIM_DNS_NODE=cmsuptrackerdaq HOME=/home/xtaldaq HOSTNAME=cmsuptrackerdaq.cern.ch XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr" customLogFilePath="">
         <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
 &lt;xc:Partition xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#xD;
 
@@ -172,11 +172,11 @@
           <value>true</value>
         </property>
         <property name="PlaybackFile" type="string">
-          <value>/home/xtaldaq/DTCSupervisor/Data/</value>
+          <value>/home/xtaldaq/DTCSupervisor/Data/run_0249.daq</value>
         </property>
       </XdaqApplication>
 
-      <XdaqExecutive hostname="cmsuptrackerdaq.cern.ch" port="41801" urn="/urn:xdaq-application:lid=1" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="1" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xtaldaq" environmentString="PATH=/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/cactus/lib:/usr/lib:/home/xtaldaq/Ph2_ACF/lib:/home/xtaldaq/DTCSupervisor/lib:/usr/lib64/root DIM_DNS_NODE=cmsuptrackerdaq HOME=/home/xtaldaq HOSTNAME=cmsuptrackerdaq.cern.ch XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr" customLogFilePath="">
+      <XdaqExecutive hostname="cmsuptrackerdaq.cern.ch" port="41801" urn="/urn:xdaq-application:lid=1" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqExecutive" instance="1" logURL="" logLevel="DEBUG" pathToExecutive="/opt/xdaq/bin/xdaq.exe" unixUser="xtaldaq" environmentString="PATH=/usr/bin:/bin LD_LIBRARY_PATH=/lib64:/usr/lib64:/opt/xdaq/lib:/opt/cactus/lib:/usr/lib:/home/xtaldaq/Ph2_ACF/lib:/home/xtaldaq/DTCSupervisor/lib:/usr/lib64/root DIM_DNS_NODE=cmsuptrackerdaq HOME=/home/xtaldaq HOSTNAME=cmsuptrackerdaq.cern.ch XDAQ_SETUP_ROOT=/opt/xdaq/share XDAQ_ROOT=/opt/xdaq XDAQ_DOCUMENT_ROOT=/opt/xdaq/htdocs XDAQ_OS=linux XDAQ_PLATFORM=x86 XDAQ_ZONE=tracker ROOTSYS=/usr DTCSUPERVISOR_ROOT=/home/xtaldaq/DTCSupervisor PH2ACF_ROOT=/home/xtaldaq/Ph2_ACF" customLogFilePath="">
 
         <configFile>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
 
@@ -211,7 +211,7 @@
       &lt;DataSinkHost xsi:type="xsd:string"&gt;cmsuptrackerdaq.cern.ch&lt;/DataSinkHost&gt;&#xD;
       &lt;DataSinkPort xsi:type="xsd:integer"&gt;39800&lt;/DataSinkPort&gt;&#xD;
       &lt;PlaybackMode xsi:type="xsd:boolean"&gt;true&lt;/PlaybackMode&gt;&#xD;
-      &lt;PlaybackFile xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Data/&lt;/PlaybackFile&gt;&#xD;
+      &lt;PlaybackFile xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Data/run_0249.daq&lt;/PlaybackFile&gt;&#xD;
       &lt;/properties&gt;&#xD;
       &lt;xc:Unicast class="evb::EVM" network="playbackbtcp" /&gt;&#xD;
     &lt;/xc:Application&gt;&#xD;
