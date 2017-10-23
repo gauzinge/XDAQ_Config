@@ -126,6 +126,9 @@
       </XdaqApplication>
 
   <XdaqApplication className="Ph2TkDAQ::DTCSupervisor" hostname="cmsuptrackerdaq.cern.ch" port="41801" urn="/urn:xdaq-application:lid=51" qualifiedResourceType="rcms.fm.resource.qualifiedresource.XdaqApplication" modulePath="lib/libxdaq2rc.so lib/libtcpla.so lib/libptblit.so /home/xtaldaq/DTCSupervisor/lib/libDTCSupervisor.so" xdaqPath="/opt/xdaq" instance="0">
+        <property name="FedID" type="unsignedShort">
+          <value>51</value>
+        </property>
         <property name="HWDescriptionFile" type="string">
           <value>/home/xtaldaq/DTCSupervisor/xml/test.xml</value>
         </property>
@@ -196,6 +199,7 @@
 
     &lt;xc:Application class="Ph2TkDAQ::DTCSupervisor" id="51" instance="0" network="local"&gt;&#xD;
       &lt;properties xmlns="urn:xdaq-application:DTCSupervisor" xsi:type="soapenc:Struct"&gt;&#xD;
+      &lt;FedID xsi:type="xsd:unsignedShort"&gt;108&lt;/FedID&gt;&#xD;
       &lt;HWDescriptionFile xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/xml/test.xml&lt;/HWDescriptionFile&gt;&#xD;
       &lt;DataDirectory xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Data/&lt;/DataDirectory&gt;&#xD;
       &lt;ResultDirectory xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Results/&lt;/ResultDirectory&gt;&#xD;
