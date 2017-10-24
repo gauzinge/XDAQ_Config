@@ -164,7 +164,7 @@
         <property name="ResultDirectory" type="string">
           <value>/home/xtaldaq/DTCSupervisor/Results/</value>
         </property>
-        <property name="RunNumber" type="integer">
+        <property name="runNumber" type="integer">
           <value>-1</value>
         </property>
         <property name="NEvents" type="unsignedInt">
@@ -229,7 +229,7 @@
       &lt;HWDescriptionFile xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/xml/test.xml&lt;/HWDescriptionFile&gt;&#xD;
       &lt;DataDirectory xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Data/&lt;/DataDirectory&gt;&#xD;
       &lt;ResultDirectory xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Results/&lt;/ResultDirectory&gt;&#xD;
-      &lt;RunNumber xsi:type="xsd:integer"&gt;-1&lt;/RunNumber&gt;&#xD;
+      &lt;runNumber xsi:type="xsd:integer"&gt;-1&lt;/runNumber&gt;&#xD;
       &lt;NEvents xsi:type="xsd:unsignedInt"&gt;1000&lt;/NEvents&gt;&#xD;
       &lt;WriteRAW xsi:type="xsd:boolean"&gt;false&lt;/WriteRAW&gt;&#xD;
       &lt;WriteDAQ xsi:type="xsd:boolean"&gt;false&lt;/WriteDAQ&gt;&#xD;
