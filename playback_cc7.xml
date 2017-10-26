@@ -156,7 +156,7 @@
           <value>51</value>
         </property>
         <property name="HWDescriptionFile" type="string">
-          <value>/home/xtaldaq/DTCSupervisor/xml/test.xml</value>
+            <value>/home/xtaldaq/Ph2_ACF/settings/CBC3DescriptionIC.xml</value>
         </property>
         <property name="DataDirectory" type="string">
           <value>/home/xtaldaq/DTCSupervisor/Data/</value>
@@ -171,7 +171,7 @@
           <value>1000</value>
         </property>
         <property name="WriteRAW" type="boolean">
-          <value>false</value>
+          <value>true</value>
         </property>
         <property name="WriteDAQ" type="boolean">
           <value>false</value>
@@ -198,7 +198,7 @@
           <value>31800</value>
         </property>
         <property name="PlaybackMode" type="boolean">
-          <value>true</value>
+          <value>false</value>
         </property>
         <property name="PlaybackFile" type="string">
           <value>/home/xtaldaq/DTCSupervisor/Data/run_99999.daq</value>
@@ -226,12 +226,12 @@
     &lt;xc:Application class="Ph2TkDAQ::DTCSupervisor" id="51" instance="0" network="local"&gt;&#xD;
       &lt;properties xmlns="urn:xdaq-application:DTCSupervisor" xsi:type="soapenc:Struct"&gt;&#xD;
       &lt;FedID xsi:type="xsd:unsignedShort"&gt;51&lt;/FedID&gt;&#xD;
-      &lt;HWDescriptionFile xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/xml/test.xml&lt;/HWDescriptionFile&gt;&#xD;
+      &lt;HWDescriptionFile xsi:type="xsd:string"&gt;/home/xtaldaq/Ph2_ACF/settings/CBC3DescriptionIC.xml&lt;/HWDescriptionFile&gt;&#xD;
       &lt;DataDirectory xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Data/&lt;/DataDirectory&gt;&#xD;
       &lt;ResultDirectory xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Results/&lt;/ResultDirectory&gt;&#xD;
       &lt;runNumber xsi:type="xsd:integer"&gt;-1&lt;/runNumber&gt;&#xD;
       &lt;NEvents xsi:type="xsd:unsignedInt"&gt;1000&lt;/NEvents&gt;&#xD;
-      &lt;WriteRAW xsi:type="xsd:boolean"&gt;false&lt;/WriteRAW&gt;&#xD;
+      &lt;WriteRAW xsi:type="xsd:boolean"&gt;true&lt;/WriteRAW&gt;&#xD;
       &lt;WriteDAQ xsi:type="xsd:boolean"&gt;false&lt;/WriteDAQ&gt;&#xD;
       &lt;ShortPause xsi:type="xsd:integer"&gt;10&lt;/ShortPause&gt;&#xD;
       &lt;THttpServerPort xsi:type="xsd:integer"&gt;9090&lt;/THttpServerPort&gt;&#xD;
@@ -240,7 +240,7 @@
       &lt;DataSourcePort xsi:type="xsd:integer"&gt;31801&lt;/DataSourcePort&gt;&#xD;
       &lt;DataSinkHost xsi:type="xsd:string"&gt;cmsuptrackerdaq.cern.ch&lt;/DataSinkHost&gt;&#xD;
       &lt;DataSinkPort xsi:type="xsd:integer"&gt;31800&lt;/DataSinkPort&gt;&#xD;
-      &lt;PlaybackMode xsi:type="xsd:boolean"&gt;true&lt;/PlaybackMode&gt;&#xD;
+      &lt;PlaybackMode xsi:type="xsd:boolean"&gt;false&lt;/PlaybackMode&gt;&#xD;
       &lt;PlaybackFile xsi:type="xsd:string"&gt;/home/xtaldaq/DTCSupervisor/Data/run_99999.daq&lt;/PlaybackFile&gt;&#xD;
       &lt;/properties&gt;&#xD;
       &lt;xc:Unicast class="evb::EVM" network="playbackbtcp" /&gt;&#xD;
