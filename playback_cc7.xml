@@ -156,7 +156,7 @@
           <value>51</value>
         </property>
         <property name="HWDescriptionFile" type="string">
-            <value>/home/xtaldaq/Ph2_ACF/settings/CBC3DescriptionIC.xml</value>
+            <value>/home/xtaldaq/Ph2_ACF/settings/D19CDescription.xml</value>
         </property>
         <property name="DataDirectory" type="string">
           <value>/home/xtaldaq/DTCSupervisor/Data/</value>
@@ -184,6 +184,12 @@
         </property>
         <property name="SendData" type="boolean">
           <value>true</value>
+        </property>
+        <property name="DataDestination" type="string">
+          <value>EVM</value>
+        </property>
+        <property name="DQMPostScale" type="integer">
+          <value>1</value>
         </property>
         <property name="DataSourceHost" type="string">
           <value>cmsuptrackerdaq.cern.ch</value>
@@ -236,6 +242,8 @@
       &lt;ShortPause xsi:type="xsd:integer"&gt;10&lt;/ShortPause&gt;&#xD;
       &lt;THttpServerPort xsi:type="xsd:integer"&gt;9090&lt;/THttpServerPort&gt;&#xD;
       &lt;SendData xsi:type="xsd:boolean"&gt;true&lt;/SendData&gt;&#xD;
+      &lt;DataDestination xsi:type="xsd:string"&gt;EVM&lt;/DataDestination&gt;&#xD;
+      &lt;DQMPostScale xsi:type="xsd:integer"&gt;1&lt;/DQMPostScale&gt;&#xD;
       &lt;DataSourceHost xsi:type="xsd:string"&gt;cmsuptrackerdaq.cern.ch&lt;/DataSourceHost&gt;&#xD;
       &lt;DataSourcePort xsi:type="xsd:integer"&gt;31801&lt;/DataSourcePort&gt;&#xD;
       &lt;DataSinkHost xsi:type="xsd:string"&gt;cmsuptrackerdaq.cern.ch&lt;/DataSinkHost&gt;&#xD;
